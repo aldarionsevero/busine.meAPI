@@ -8,10 +8,10 @@ The packages should have this code style
 <pre><code>#!/usr/bin/env python
 # coding: utf-8
 
-"""Acidentes em Rodovias
+"""Busine-me API
 
 Universidade de Brasilia - FGA
-Técnicas de Programação, 1/2014
+Técnicas de Programação, 1/2015
 
 @file NameOfFile.py
 A description which can be long and explain the complete
@@ -119,10 +119,10 @@ import MySQLdb
 <pre><code>
 /**
  * Universidade de Brasilia - FGA
- * Técnicas de Programação, 1/2014
+ * Técnicas de Programação, 1/2015
  *
- * Acidentes em Rodovias, 2013-2014
- * GitHub: https://github.com/josepedro/acidentes_em_rodovias_refatoracao
+ * Busineme API
+ * GitHub: https://github.com/aldarionsevero/busine.meAPI
  *
  */
 </code></pre>
@@ -212,9 +212,9 @@ hr {
 <pre><code>
 /*
  * Universidade de Brasilia - FGA
- * Técnicas de Programação, 1/2014
- * Acidentes em Rodovias, 2013-2014
- * GitHub: https://github.com/josepedro/acidentes_em_rodovias_refatoracao
+ * Técnicas de Programação, 1/2015
+ * Busineme API
+ * GitHub: https://github.com/aldarionsevero/busine.meAPI
 */
 </code></pre>
 
@@ -330,9 +330,9 @@ function inner(a, b) {
 &lt;!--
 &lt;meta charset="utf-8">
 Universidade de Brasilia - FGA
-Técnicas de Programação, 1/2014
-Acidentes em Rodovias, 2013-2014
-GitHub: https://github.com/josepedro/acidentes_em_rodovias_refatoracao
+Técnicas de Programação, 1/2015
+Busineme API
+GitHub: https://github.com/aldarionsevero/busine.meAPI
 -->
 </code></pre>
 
