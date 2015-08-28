@@ -11,7 +11,7 @@ The packages should have this code style
 """Busine-me API
 
 Universidade de Brasilia - FGA
-Técnicas de Programação, 1/2015
+Técnicas de Programação, 2/2015
 
 @file NameOfFile.py
 A description which can be long and explain the complete
@@ -119,7 +119,7 @@ import MySQLdb
 <pre><code>
 /**
  * Universidade de Brasilia - FGA
- * Técnicas de Programação, 1/2015
+ * Técnicas de Programação, 2/2015
  *
  * Busineme API
  * GitHub: https://github.com/aldarionsevero/busine.meAPI
@@ -212,7 +212,7 @@ hr {
 <pre><code>
 /*
  * Universidade de Brasilia - FGA
- * Técnicas de Programação, 1/2015
+ * Técnicas de Programação, 2/2015
  * Busineme API
  * GitHub: https://github.com/aldarionsevero/busine.meAPI
 */
@@ -330,7 +330,7 @@ function inner(a, b) {
 &lt;!--
 &lt;meta charset="utf-8">
 Universidade de Brasilia - FGA
-Técnicas de Programação, 1/2015
+Técnicas de Programação, 2/2015
 Busineme API
 GitHub: https://github.com/aldarionsevero/busine.meAPI
 -->
