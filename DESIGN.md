@@ -51,9 +51,9 @@ Always use 4 spaces to indent.
 Always indent.
 <pre><code>if x > 5:
     if x == 7:
-        print x
+        print 'Bus is near'
     else:
-        print x + 1
+        print 'Bus is far far away! '
 </code></pre>
 
 ####Line Length
@@ -74,11 +74,11 @@ Name of method/function into language of programming language, with initial into
 #####Classes
 Class name will be into language of programming language, initial uppercase and, if it have more than one word, break with letter into uppercase in the beginning of the other word. Each class have to have the comment with a short description.
 
-<pre><code>class ClassOne():
+<pre><code>class BusLine():
 
     """This class is only a example."""
 
-    def method_x():
+    def method_search_line():
         # ...
 </code></pre>
 
@@ -92,9 +92,9 @@ car.model = '208'</code></pre>
 Tuples, lists and dictionaries will be described into following pattern:
 
 <pre><code>tuple = (
-    var_x,
-    var_y,
-    var_z,
+    bus,
+    line,
+    stop_bus,
 )
 </code></pre>
 
