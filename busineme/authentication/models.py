@@ -14,6 +14,14 @@ class RankPosition(models.Model):
 class BusinemeUser(AbstractUser):
     pontuation = models.IntegerField(default=0)
     rank = models.ForeignKey(RankPosition, null=True)
+    serialize_fields = ['username',
+                        'first_name',
+                        'last_name',
+                        'rank',
+                        'pontuation',
+                        'email',
+                        'id',
+                        'date_joined']
 
     def save(self, *args, **kwargs):
         self.username = self.username.lower()
