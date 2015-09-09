@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
-class RankPosition(BusinemeModel):
+class RankPosition(models.Model):
     description = models.CharField(max_length=100)
     min_points = models.IntegerField()
 
@@ -11,7 +11,7 @@ class RankPosition(BusinemeModel):
         return "{} - {}".format(self.id, self.description)
 
 
-class BusinemeUser(BusinemeModel, AbstractUser):
+class BusinemeUser(AbstractUser):
     pontuation = models.IntegerField(default=0)
     rank = models.ForeignKey(RankPosition, null=True)
 
