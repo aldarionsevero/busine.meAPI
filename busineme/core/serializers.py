@@ -1,6 +1,4 @@
-
-
-class Serializer():
+from django.db import models
 
     def serialize(self, busineme_object):
         """ 
@@ -12,7 +10,8 @@ class Serializer():
         json_fields = {}
 
         for fields in required_fields:
-
-            json_fields[fields] = getattr(user, fields)
-
+            if not issubclass(fields.__class__, models.Model)
+                json_fields[fields] = getattr(busineme_object, fields)
+            else
+                serialize(fields)
         return json_fields
