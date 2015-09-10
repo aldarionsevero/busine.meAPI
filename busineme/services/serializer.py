@@ -14,6 +14,6 @@ class Serializer():
 
         for fields in required_fields:
 
-            json_fields[fields] = getattr(required_fields, fields)
+            json_fields[fields] = getattr(user, fields)
 
         return json_fields
