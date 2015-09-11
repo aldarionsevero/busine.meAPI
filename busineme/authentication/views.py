@@ -13,7 +13,7 @@ Views (on classic MVC, controllers) with methods that control the requisitions f
 from django.views.generic import View
 from django.utils.translation import ugettext as _
 from core.serializers import serialize
-from .models import BusinemeUser
+from models import BusinemeUser
 from django.http import HttpResponse
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
@@ -38,10 +38,18 @@ class LoginView(View):
         password = request.POST['password']
 
         user = authenticate(username=username, password=password)
-        json_data_user_authenticated = serialize('json', user)
+        if user is not None:
+            message_log = return_message(STATUS_OK)
+            json_data_user_authenticated = serialize('json', user)
 
-        return HttpResponse(json_data_user_authenticated,
-                            content_type='application/json')
+            return HttpResponse(message_log, json_data_user_authenticated,
+                                content_type='application/json',
+                                status=STATUS_OK)
+        else:
+            message_log = return_message(STATUS_NOT_FOUND)
+            response = HttpResponse(
+                message_log, content_type='application/json',
+                status=STATUS_NOT_FOUND)
 
     def delete(self, request):
         """Delete an user."""
