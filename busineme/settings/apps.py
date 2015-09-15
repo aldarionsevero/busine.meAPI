@@ -22,6 +22,6 @@ DJANGO_APPS = (
 
 DJANGO_PLUGINS = ()
 
-BUSINEME_APPS = ('importer', 'authentication')
+BUSINEME_APPS = ('importer', 'authentication', 'core')
 
 INSTALLED_APPS = DJANGO_APPS + DJANGO_PLUGINS + BUSINEME_APPS
