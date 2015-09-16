@@ -1,5 +1,9 @@
 from authentication.models import BusinemeUser
 from django.test import SimpleTestCase
+from django.http import HttpResponse
+
+
+STATUS_NOT_FOUND = 404
 
 
 class BusinemeUserAuth(SimpleTestCase):
@@ -50,3 +54,26 @@ class BusinemeUserAuth(SimpleTestCase):
         update_user.assertEquals(last_name, '')
 
         update_user.save()
+
+    def update_user_password(self, request):
+
+        update_user = request.user
+
+        new_password = request.POST['new_password']
+        confirm_new_password = request.POST['confirm_new_password']
+
+        update_user.assertNotEquals(new_password, None)
+        update_user.assertNotEquals(confirm_new_password, None)
+
+        if new_password.isEquals(confirm_new_password):
+            update_user.set_password(new_password)
+            update_user.save()
+
+            message_log_sucess = "Changes saved"
+            response = HttpResponse(message_log_sucess)
+        else:
+            message_log_fail = "Unable to change password \
+                                password's don't match"
+            response = HttpResponse(message_log_fail)
+
+        return response
