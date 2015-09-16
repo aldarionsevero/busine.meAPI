@@ -40,20 +40,10 @@ def update_user_first_last_name(request):
     first_name = update_user.first_name
     last_name = update_user.last_name
 
+    update_user.assertEquals(update_user, None)
     update_user.assertEquals(first_name, None)
     update_user.assertEquals(last_name, None)
+    update_user.assertEquals(first_name, '')
+    update_user.assertEquals(last_name, '')
 
-    update_user.save()
-
-
-def update_user_password(request):
-    """Define method for update password attribute given a
-        specific BuslineUser using the POST method for security"""
-
-    update_user = request.user
-    update_user_password.set_password(request.POST['password'])
-
-    password = update_user_password
-    update_user.assertEquals(password, None)
-    update_user.assertEquals(password, '')
     update_user.save()
