@@ -12,9 +12,10 @@ for the user authentication and manipulation.
 """
 
 from django.views.generic import View
-from core.serializers import serialize
+from core.serializers import serialize_users
 from .models import BusinemeUser
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.contrib.auth import authenticate
 from core.return_message import return_message
 
@@ -29,8 +30,8 @@ class LoginView(View):
 
     def get(self, request):
         """Returns all users."""
-        json_data = serialize(BusinemeUser.objects.all())
-        return HttpResponse(json_data, content_type='application/json')
+        json_data = serialize_users(BusinemeUser.objects.all())
+        return JsonResponse(json_data, content_type='application/json')
 
     def post(self, request):
         """Verify if user exists and authenticates."""

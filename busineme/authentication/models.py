@@ -7,6 +7,8 @@ from django.http import HttpResponse
 class RankPosition(models.Model):
     description = models.CharField(max_length=100)
     min_points = models.IntegerField()
+    serialize_fields = ['description',
+                        'min_points']
 
     def __str__(self):
         return "{} - {}".format(self.id, self.description)
