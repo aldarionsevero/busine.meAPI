@@ -1,7 +1,7 @@
 from django.db import models
 
 
-def serialize(self, busineme_object):
+def serialize(busineme_object):
     """
     This method generate json based in the fields who we want to
     show or we user in the aplicattion. Busineme_object is a generic object

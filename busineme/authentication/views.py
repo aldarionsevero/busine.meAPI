@@ -12,17 +12,16 @@ for the user authentication and manipulation.
 """
 
 from django.views.generic import View
-from django.utils.translation import ugettext as _
 from core.serializers import serialize
 from .models import BusinemeUser
 from django.http import HttpResponse
 from django.contrib.auth import authenticate
-from django.contrib.auth import login
-from django.contrib.auth import logout
 from core.return_message import return_message
 
 STATUS_OK = 200
 STATUS_NOT_FOUND = 404
+STATUS_CREATED = 201
+STATUS_SERVER_ERROR = 500
 
 
 class LoginView(View):
@@ -30,19 +29,28 @@ class LoginView(View):
 
     def get(self, request):
         """Returns all users."""
-        json_data = serialize('json', BusinemeUser.objects.all())
+        json_data = serialize(BusinemeUser.objects.all())
         return HttpResponse(json_data, content_type='application/json')
 
     def post(self, request):
         """Verify if user exists and authenticates."""
-        username = request.POST['username']
-        password = request.POST['password']
 
-        user = authenticate(username=username, password=password)
-        json_data_user_authenticated = serialize('json', user)
+        new_user = BusinemeUser()
+        new_user.create_user(request)
+        user = new_user.user_authenticate(request)
 
-        return HttpResponse(json_data_user_authenticated,
-                            content_type='application/json')
+        if user is not None:
+            message_log = return_message(STATUS_CREATED)
+            response = HttpResponse(
+                message_log, content_type='application/json',
+                status=STATUS_CREATED)
+        else:
+            message_log = return_message(STATUS_SERVER_ERROR)
+            response = HttpResponse(
+                message_log, content_type='application/json',
+                status=STATUS_SERVER_ERROR)
+
+        return response
 
     def delete(self, request):
         """Delete an user."""

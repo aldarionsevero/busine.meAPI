@@ -9,8 +9,10 @@ STATUS_NOT_FOUND = 404
 class BusinemeUserAuth(SimpleTestCase):
 
     def create_user(self, request):
-        """PUT method for create an user by receiving
-        four arguments from application, using POST method for security"""
+        """
+        PUT method for create an user by receiving
+        four arguments from application, using POST method for security.
+        """
 
         new_user = BusinemeUser()
         new_user.username = request.POST['username']
@@ -36,8 +38,10 @@ class BusinemeUserAuth(SimpleTestCase):
         new_user.save()
 
     def update_user_first_last_name(self, request):
-        """Define method for update first_name and last_name given a
-           specific BuslineUser using the POST method for security"""
+        """
+        Define method for update first_name and last_name given a
+        specific BuslineUser using the POST method for security.
+        """
 
         update_user = request.user
         update_user.first_name = request.POST['first_name']
@@ -77,3 +81,5 @@ class BusinemeUserAuth(SimpleTestCase):
             response = HttpResponse(message_log_fail)
 
         return response
+
+    def user_authenticate
