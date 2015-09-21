@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 """Busine-me API
 Universidade de Brasilia - FGA
 Técnicas de Programação, 2/2015

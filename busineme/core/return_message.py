@@ -1,3 +1,10 @@
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Técnicas de Programação, 2/2015
+@file return_message.py
+File to define default return messages
+"""
 
 
 def return_message(self, status_code):

@@ -1,3 +1,10 @@
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Técnicas de Programação, 2/2015
+@file models.py
+Models for User an Rank.
+"""
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import authenticate
 from django.db import models
@@ -5,6 +12,9 @@ from django.http import HttpResponse
 
 
 class RankPosition(models.Model):
+
+    """Model that carries the user rank based in description and points."""
+
     description = models.CharField(max_length=100)
     min_points = models.IntegerField()
     serialize_fields = ['description',
@@ -15,6 +25,9 @@ class RankPosition(models.Model):
 
 
 class BusinemeUser(AbstractUser):
+
+    """Model for User. Inherits AbstractUser and overrides specific things."""
+
     pontuation = models.IntegerField(default=0)
     rank = models.ForeignKey(RankPosition, null=True)
     serialize_fields = ['username',
@@ -27,6 +40,7 @@ class BusinemeUser(AbstractUser):
                         'date_joined']
 
     def save(self, *args, **kwargs):
+        """Saves user."""
         self.username = self.username.lower()
         super(BusinemeUser, self).save(*args, **kwargs)
 
@@ -38,7 +52,6 @@ class BusinemeUser(AbstractUser):
         PUT method for create an user by receiving
         four arguments from application, using POST method for security.
         """
-
         self.username = request.POST['username']
         self.first_name = request.POST['first_name']
         self.last_name = request.POST['last_name']
@@ -67,7 +80,6 @@ class BusinemeUser(AbstractUser):
         Define method for update first_name and last_name given a
         specific BuslineUser using the POST method for security.
         """
-
         self.first_name = request.POST['first_name']
         self.last_name = request.POST['last_name']
 

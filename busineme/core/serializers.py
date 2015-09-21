@@ -1,3 +1,10 @@
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Técnicas de Programação, 2/2015
+@file serializers.py
+Methods to serialize objects.
+"""
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -17,7 +24,7 @@ def serialize(busineme_object):
                 or issubclass(attribute.__class__, AbstractUser) \
                 or issubclass(attribute.__class__, models.ManyToManyField):
             if issubclass(attribute.__class__, models.ManyToManyField):
-                json_dict[field] = serialize_terminals(attribute.__class__)
+                json_dict[field] = serialize_list(attribute.__class__)
             else:
                 json_dict[field] = serialize(attribute)
         else:
@@ -34,7 +41,7 @@ def serialize_objects(object_list):
     return json_dict
 
 
-def serialize_terminals(many_to_many_field):
+def serialize_list(many_to_many_field):
     object_list = many_to_many_field.all()
     json_list = []
     for object in object_list:

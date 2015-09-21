@@ -1,3 +1,10 @@
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Técnicas de Programação, 2/2015
+@file models.py
+Busline Company and Terminal models.
+"""
 from django.db import models
 
 

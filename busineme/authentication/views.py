@@ -1,14 +1,11 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-"""Busine-me API
+"""
+Busine-me API
 Universidade de Brasilia - FGA
 Técnicas de Programação, 2/2015
 @file views.py
 Views (on classic MVC, controllers) with methods that control the requisitions
 for the user authentication and manipulation.
 """
-
 from django.views.generic import View
 from core.serializers import serialize_objects
 from .models import BusinemeUser
