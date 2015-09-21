@@ -13,6 +13,14 @@ class Busline(models.Model):
     company = models.ForeignKey('Company', null=True)
     terminals = models.ManyToManyField('Terminal')
 
+    serialize_fields = ['line_number',
+                        'description',
+                        'via',
+                        'route_size',
+                        'fee',
+                        'company',
+                        'terminals']
+
     def __str__(self):
         return "{} - {}".format(self.line_number, self.description)
 
@@ -33,6 +41,8 @@ class Company(models.Model):
 
     name = models.CharField(max_length=255)
 
+    serialize_fields = ['name']
+
     def __str__(self):
         return "{}".format(self.name)
 
@@ -43,6 +53,9 @@ class Terminal(models.Model):
 
     description = models.CharField(max_length=255)
     address = models.CharField(max_length=255, null=True)
+
+    serialize_fields = ['description',
+                        'address']
 
     def __str__(self):
         return "{}".format(self.description)

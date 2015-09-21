@@ -10,9 +10,8 @@ for the user authentication and manipulation.
 """
 
 from django.views.generic import View
-from core.serializers import serialize_users
+from core.serializers import serialize_objects
 from .models import BusinemeUser
-from django.http import HttpResponse
 from django.http import JsonResponse
 from django.contrib.auth import authenticate
 from core.return_message import return_message
@@ -28,7 +27,7 @@ class LoginView(View):
 
     def get(self, request):
         """Returns all users."""
-        json_data = serialize_users(BusinemeUser.objects.all())
+        json_data = serialize_objects(BusinemeUser.objects.all())
         return JsonResponse(json_data, content_type='application/json')
 
     def post(self, request):
@@ -40,12 +39,12 @@ class LoginView(View):
 
         if user is not None:
             message_log = return_message(STATUS_CREATED)
-            response = HttpResponse(
+            response = JsonResponse(
                 message_log, content_type='application/json',
                 status=STATUS_CREATED)
         else:
             message_log = return_message(STATUS_SERVER_ERROR)
-            response = HttpResponse(
+            response = JsonResponse(
                 message_log, content_type='application/json',
                 status=STATUS_SERVER_ERROR)
 
@@ -60,12 +59,12 @@ class LoginView(View):
         if user is not None:
             user.delete()
             message_log = return_message(STATUS_OK)
-            response = HttpResponse(
+            response = JsonResponse(
                 message_log, content_type='application/json',
                 status=STATUS_OK)
         else:
             message_log = return_message(STATUS_NOT_FOUND)
-            response = HttpResponse(
+            response = JsonResponse(
                 message_log, content_type='application/json',
                 status=STATUS_NOT_FOUND)
 
