@@ -22,9 +22,9 @@ def serialize(busineme_object):
         attribute = getattr(busineme_object, field)
         if issubclass(attribute.__class__, models.Model) \
                 or issubclass(attribute.__class__, AbstractUser) \
-                or issubclass(attribute.__class__, models.ManyToManyField):
-            if issubclass(attribute.__class__, models.ManyToManyField):
-                json_dict[field] = serialize_list(attribute.__class__)
+                or issubclass(attribute.__class__, models.Manager):
+            if issubclass(attribute.__class__, models.Manager):
+                json_dict[field] = serialize_list(attribute)
             else:
                 json_dict[field] = serialize(attribute)
         else:
