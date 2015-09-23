@@ -1,7 +1,7 @@
 """
 Busine-me API
 Universidade de Brasilia - FGA
-Técnicas de Programação, 2/2015
+Tecnicas de Programação, 2/2015
 @file models.py
 Models for User an Rank.
 """
@@ -9,6 +9,11 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import authenticate
 from django.db import models
 from django.http import HttpResponse
+import logging
+
+logging.basicConfig(format='%(levelname)s: %(asctime)s %(message)s',
+                    filename='authentication/logging/modelsLogging.log',
+                    level=logging.DEBUG)
 
 
 class RankPosition(models.Model):
@@ -57,21 +62,22 @@ class BusinemeUser(AbstractUser):
         self.last_name = request.POST['last_name']
         self.set_password(request.POST['password'])
 
-        # Must check if the assertives is  write correcly and define a message
-        # error for each one
-
         username = self.username
         first_name = self.first_name
         email = self.email
 
-        assert self is not None
-        assert username is not None
-        assert first_name is not None
-        assert email is not None
+        assert self is None
+        assert username is None
+        assert first_name is None
+        assert email is None
 
         assert username == ''
         assert first_name == ''
         assert email == ''
+
+        logging.debug(
+            'Object %s - username %s - first_name %s - email - %s',
+            self, username, first_name, email)
 
         self.save()
 
@@ -87,14 +93,18 @@ class BusinemeUser(AbstractUser):
         first_name = self.first_name
         email = self.email
 
-        assert self is not None
-        assert username is not None
-        assert first_name is not None
-        assert email is not None
+        assert self is None
+        assert username is None
+        assert first_name is None
+        assert email is None
 
         assert username == ''
         assert first_name == ''
         assert email == ''
+
+        logging.debug(
+            'Object %s - username %s - first_name %s - email - %s',
+            self, username, first_name, email)
 
         self.save()
 
@@ -105,11 +115,15 @@ class BusinemeUser(AbstractUser):
         new_password = request.POST['new_password']
         confirm_new_password = request.POST['confirm_new_password']
 
-        assert new_password is not None
-        assert confirm_new_password is not None
+        assert new_password is None
+        assert confirm_new_password is None
 
-        assert new_password is not ''
-        assert confirm_new_password is not ''
+        assert new_password == ''
+        assert confirm_new_password == ''
+
+        logging.debug(
+            'Object %s - password could not be changed. Something came Null ',
+            self, new_password, confirm_new_password)
 
         if new_password.isEquals(confirm_new_password):
             update_user.set_password(new_password)
