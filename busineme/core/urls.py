@@ -6,9 +6,9 @@ Técnicas de Programação, 2/2015
 File to route urls.
 """
 from django.conf.urls import url
-from .views import LoginView
+from .views import BuslineSearchResultView
 
 urlpatterns = [
-    url(r'^users/$', LoginView.as_view(),
-        name='users'),
+    url(r'^buslines/$', BuslineSearchResultView.as_view(),
+        name='buslines'),
 ]
