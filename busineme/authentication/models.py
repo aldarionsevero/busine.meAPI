@@ -105,8 +105,11 @@ class BusinemeUser(AbstractUser):
         new_password = request.POST['new_password']
         confirm_new_password = request.POST['confirm_new_password']
 
-        update_user.assertNotEquals(new_password, None)
-        update_user.assertNotEquals(confirm_new_password, None)
+        assert new_password is not None
+        assert confirm_new_password is not None
+
+        assert new_password is not ''
+        assert confirm_new_password is not ''
 
         if new_password.isEquals(confirm_new_password):
             update_user.set_password(new_password)
