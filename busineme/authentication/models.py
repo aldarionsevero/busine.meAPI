@@ -11,9 +11,12 @@ from django.db import models
 from django.http import HttpResponse
 import logging
 
-logging.basicConfig(format='%(levelname)s: %(asctime)s %(message)s',
+
+FORMAT = '%(levelname)s: %(asctime)s %(message)s'
+logging.basicConfig(format=FORMAT,
                     filename='authentication/logging/modelsLogging.log',
                     level=logging.DEBUG)
+logger = logging.getLogger('models')
 
 
 class RankPosition(models.Model):
@@ -57,6 +60,9 @@ class BusinemeUser(AbstractUser):
         PUT method for create an user by receiving
         four arguments from application, using POST method for security.
         """
+
+        logger.debug("create user in progress")
+
         self.username = request.POST['username']
         self.first_name = request.POST['first_name']
         self.last_name = request.POST['last_name']
@@ -75,9 +81,10 @@ class BusinemeUser(AbstractUser):
         assert first_name != ''
         assert email != ''
 
-        logging.debug(
-            'Object %s - username %s - first_name %s - email - %s',
-            self, username, first_name, email)
+        records = {"username": username,
+                   "first_name": first_name,
+                   "email": email}
+        logger.debug("BusinemeUser create INFO: %s", records)
 
         self.save()
 
@@ -86,6 +93,9 @@ class BusinemeUser(AbstractUser):
         Define method for update first_name and last_name given a
         specific BuslineUser using the POST method for security.
         """
+
+        logger.debug("update names in progress")
+
         self.first_name = request.POST['first_name']
         self.last_name = request.POST['last_name']
 
@@ -102,13 +112,15 @@ class BusinemeUser(AbstractUser):
         assert first_name != ''
         assert email != ''
 
-        logging.debug(
-            'Object %s - username %s - first_name %s - email - %s',
-            self, username, first_name, email)
-
+        records = {"username": username,
+                   "first_name": first_name,
+                   "email": email}
+        logger.debug("BusinemeUser up_names INFO: %s", records)
         self.save()
 
     def update_user_password(self, request):
+
+        logger.debug("update password in progress")
 
         update_user = request.user
 
@@ -136,6 +148,7 @@ class BusinemeUser(AbstractUser):
                                 password's don't match"
             response = HttpResponse(message_log_fail)
 
+        logger.debug("password updated")
         return response
 
     def user_authenticate(self, request):
