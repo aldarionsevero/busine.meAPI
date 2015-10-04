@@ -5,7 +5,9 @@ from importer.parser import Parser
 
 class TestParser(ParserTest):
 
-    """docstring for API_Views"""
+    """
+    docstring for API_Views.
+    """
 
     def test_parser(self):
         self.assertTrue(True)

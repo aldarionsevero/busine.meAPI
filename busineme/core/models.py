@@ -44,7 +44,9 @@ class Busline(models.Model):
 
 class Company(models.Model):
 
-    """Company Model."""
+    """
+    Company Model.
+    """
 
     name = models.CharField(max_length=255)
 
@@ -56,7 +58,9 @@ class Company(models.Model):
 
 class Terminal(models.Model):
 
-    """Terminal Model."""
+    """
+    Terminal Model.
+    """
 
     description = models.CharField(max_length=255)
     address = models.CharField(max_length=255, null=True)

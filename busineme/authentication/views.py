@@ -30,7 +30,9 @@ class LoginView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """Returns all users."""
+        """
+        Returns all users.
+        """
 
         logging.info("All users request")
 
@@ -38,7 +40,9 @@ class LoginView(View):
         return JsonResponse(json_data, content_type='application/json')
 
     def post(self, request):
-        """Verify if user exists and authenticates."""
+        """
+        Verify if user exists and authenticates.
+        """
 
         logging.info("create new user request")
 
@@ -60,7 +64,9 @@ class LoginView(View):
         return response
 
     def delete(self, request):
-        """Delete an user."""
+        """
+        Delete an user.
+        """
 
         logging.info("delete user requested")
 

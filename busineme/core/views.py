@@ -1,4 +1,5 @@
-"""Busine-me API
+"""
+Busine-me API
 Universidade de Brasilia - FGA
 Técnicas de Programação, 2/2015
 @file views.py
@@ -21,6 +22,8 @@ class BuslineSearchResultView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """Returns all users."""
+        """
+        Returns all users.
+        """
         json_data = serialize_objects(Busline.objects.all())
         return JsonResponse(json_data, content_type='application/json')
