@@ -66,14 +66,14 @@ class BusinemeUser(AbstractUser):
         first_name = self.first_name
         email = self.email
 
-        assert self is None
-        assert username is None
-        assert first_name is None
-        assert email is None
+        assert self is not None
+        assert username is not None
+        assert first_name is not None
+        assert email is not None
 
-        assert username == ''
-        assert first_name == ''
-        assert email == ''
+        assert username != ''
+        assert first_name != ''
+        assert email != ''
 
         logging.debug(
             'Object %s - username %s - first_name %s - email - %s',
@@ -93,14 +93,14 @@ class BusinemeUser(AbstractUser):
         first_name = self.first_name
         email = self.email
 
-        assert self is None
-        assert username is None
-        assert first_name is None
-        assert email is None
+        assert self is not None
+        assert username is not None
+        assert first_name is not None
+        assert email is not None
 
-        assert username == ''
-        assert first_name == ''
-        assert email == ''
+        assert username != ''
+        assert first_name != ''
+        assert email != ''
 
         logging.debug(
             'Object %s - username %s - first_name %s - email - %s',
@@ -115,11 +115,11 @@ class BusinemeUser(AbstractUser):
         new_password = request.POST['new_password']
         confirm_new_password = request.POST['confirm_new_password']
 
-        assert new_password is None
-        assert confirm_new_password is None
+        assert new_password is not None
+        assert confirm_new_password is not None
 
-        assert new_password == ''
-        assert confirm_new_password == ''
+        assert new_password != ''
+        assert confirm_new_password != ''
 
         logging.debug(
             'Object %s - password could not be changed. Something came Null ',
