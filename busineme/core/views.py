@@ -13,11 +13,13 @@ from .models import Busline
 from django.http import JsonResponse
 
 STATUS_OK = 200
-STATUS_NOT_FOUND = 404
 STATUS_CREATED = 201
+STATUS_NOT_FOUND = 404
 STATUS_SERVER_ERROR = 500
 
-
+"""
+This class is used for manage the results of Busline searchs.
+"""
 class BuslineSearchResultView(View):
     http_method_names = [u'get', u'post']
 

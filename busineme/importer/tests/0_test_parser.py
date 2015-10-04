@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Tecnicas de Programação, 2/2015
+@file 0_test_parser.py
+Tests for Parser.
+"""
 from configuration.tests import ParserTest
 from importer.parser import Parser
 

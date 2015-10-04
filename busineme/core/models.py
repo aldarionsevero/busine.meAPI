@@ -7,10 +7,11 @@ Busline Company and Terminal models.
 """
 from django.db import models
 
-
 class Busline(models.Model):
 
-    """Busline Model."""
+    """
+    Busline Model.
+    """
 
     line_number = models.CharField(max_length=5, unique=True)
     description = models.CharField(max_length=255)

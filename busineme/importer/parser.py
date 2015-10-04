@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
-
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Tecnicas de Programação, 2/2015
+@file parser.py
+Populate database with parser data.
+"""
 import csv
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError

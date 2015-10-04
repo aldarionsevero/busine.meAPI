@@ -6,7 +6,6 @@ Técnicas de Programação, 2/2015
 File to define default return messages
 """
 
-
 def return_message(self, status_code):
     """
     Return a dict with the status code and messages.
