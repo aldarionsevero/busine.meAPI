@@ -26,6 +26,9 @@ logging.basicConfig(format=FORMAT,
                     level=logging.DEBUG)
 
 
+"""
+Class used to control the views from login of users.
+"""
 class LoginView(View):
     http_method_names = [u'get', u'post']
 
