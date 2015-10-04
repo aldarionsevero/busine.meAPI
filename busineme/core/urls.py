@@ -11,4 +11,8 @@ from .views import BuslineSearchResultView
 urlpatterns = [
     url(r'^buslines/$', BuslineSearchResultView.as_view(),
         name='buslines'),
+    url(r'^buslines/(?P<line_number>[0-9]+)/$',
+        BuslineSearchResultView.getbusline),
+    url(r'^buslines/(?P<line_number>[0-9]+\.[0-9]+)/$',
+        BuslineSearchResultView.getbusline)
 ]
