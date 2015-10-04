@@ -16,7 +16,6 @@ FORMAT = '%(levelname)s: %(asctime)s %(message)s'
 logging.basicConfig(format=FORMAT,
                     filename='authentication/logging/modelsLogging.log',
                     level=logging.DEBUG)
-logger = logging.getLogger('models')
 
 
 class RankPosition(models.Model):
@@ -61,7 +60,7 @@ class BusinemeUser(AbstractUser):
         four arguments from application, using POST method for security.
         """
 
-        logger.debug("create user in progress")
+        logging.info("create user in progress")
 
         self.username = request.POST['username']
         self.first_name = request.POST['first_name']
@@ -84,7 +83,7 @@ class BusinemeUser(AbstractUser):
         records = {"username": username,
                    "first_name": first_name,
                    "email": email}
-        logger.debug("BusinemeUser create INFO: %s", records)
+        logging.debug("BusinemeUser create INFO: %s", records)
 
         self.save()
 
@@ -94,7 +93,7 @@ class BusinemeUser(AbstractUser):
         specific BuslineUser using the POST method for security.
         """
 
-        logger.debug("update names in progress")
+        logging.info("update names in progress")
 
         self.first_name = request.POST['first_name']
         self.last_name = request.POST['last_name']
@@ -115,12 +114,12 @@ class BusinemeUser(AbstractUser):
         records = {"username": username,
                    "first_name": first_name,
                    "email": email}
-        logger.debug("BusinemeUser up_names INFO: %s", records)
+        logging.debug("BusinemeUser up_names INFO: %s", records)
         self.save()
 
     def update_user_password(self, request):
 
-        logger.debug("update password in progress")
+        logging.info("update password in progress")
 
         update_user = request.user
 
@@ -133,9 +132,12 @@ class BusinemeUser(AbstractUser):
         assert new_password != ''
         assert confirm_new_password != ''
 
+        records = {"new_password": new_password,
+                   "confirm_new_password": confirm_new_password}
+
         logging.debug(
             'Object %s - password could not be changed. Something came Null ',
-            self, new_password, confirm_new_password)
+            records)
 
         if new_password.isEquals(confirm_new_password):
             update_user.set_password(new_password)
@@ -148,7 +150,7 @@ class BusinemeUser(AbstractUser):
                                 password's don't match"
             response = HttpResponse(message_log_fail)
 
-        logger.debug("password updated")
+        logging.info("password updated")
         return response
 
     def user_authenticate(self, request):
