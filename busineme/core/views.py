@@ -39,3 +39,10 @@ class BuslineSearchResultView(View):
 
         return JsonResponse(json_data_buslines_description,
                             content_type='application/json')
+
+    def get_line_description(self, line_number, description):
+
+        buslines_line_description = \
+            Busline.filter_by_line_description(line_number, description)
+
+        return buslines_line_description

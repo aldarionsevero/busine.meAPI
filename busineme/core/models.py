@@ -52,6 +52,19 @@ class Busline(models.Model):
             cls.objects.filter(description__contains=description)
         return buslines_with_description
 
+    @classmethod
+    def filter_by_line_description(cls, line_number, description):
+        """
+        Return the buslines who matches with the given line_number and
+        description give. This method was created because the API is REST FULL.
+        """
+
+        buslines_line_description = \
+            cls.objects.filter(description__contains=description,
+                               line_number__contains=line_number)
+
+        return buslines_line_description
+
 
 class Company(models.Model):
 
