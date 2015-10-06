@@ -41,6 +41,17 @@ class Busline(models.Model):
         objects = cls.objects.filter(line_number__startswith=line_number)
         return objects
 
+    @classmethod
+    def filter_by_description(cls, description):
+        """
+        This method return all buslines \
+        who matches with the given description.
+        """
+
+        buslines_with_description = \
+            cls.objects.filter(description__contains=description)
+        return buslines_with_description
+
 
 class Company(models.Model):
 
