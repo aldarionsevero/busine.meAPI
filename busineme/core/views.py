@@ -24,3 +24,25 @@ class BuslineSearchResultView(View):
         """Returns all users."""
         json_data = serialize_objects(Busline.objects.all())
         return JsonResponse(json_data, content_type='application/json')
+
+    def get_busline(self, line_number):
+
+        busline = Busline.api_filter_startswith(line_number)
+        json_data = serialize_objects(busline)
+
+        return JsonResponse(json_data, content_type='application/json')
+
+    def get_description(self, description):
+
+        busline = Busline.filter_by_description(description)
+        json_data_buslines_description = serialize_objects(busline)
+
+        return JsonResponse(json_data_buslines_description,
+                            content_type='application/json')
+
+    def get_line_description(self, line_number, description):
+
+        buslines_line_description = \
+            Busline.filter_by_line_description(line_number, description)
+
+        return buslines_line_description

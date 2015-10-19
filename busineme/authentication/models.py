@@ -30,6 +30,7 @@ class BusinemeUser(AbstractUser):
 
     pontuation = models.IntegerField(default=0)
     rank = models.ForeignKey(RankPosition, null=True)
+
     serialize_fields = ['username',
                         'first_name',
                         'last_name',
