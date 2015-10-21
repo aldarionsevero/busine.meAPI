@@ -7,6 +7,7 @@ Busline Company and Terminal models.
 """
 from django.db import models
 
+
 class Busline(models.Model):
 
     """

@@ -20,6 +20,8 @@ STATUS_SERVER_ERROR = 500
 """
 This class is used for manage the results of Busline searchs.
 """
+
+
 class BuslineSearchResultView(View):
     http_method_names = [u'get', u'post']
 
