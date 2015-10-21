@@ -1,11 +1,20 @@
 # -*- coding: utf-8 -*-
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Tecnicas de Programação, 2/2015
+@file 0_test_parser.py
+Tests for Parser.
+"""
 from configuration.tests import ParserTest
 from importer.parser import Parser
 
 
 class TestParser(ParserTest):
 
-    """docstring for API_Views"""
+    """
+    docstring for API_Views.
+    """
 
     def test_parser(self):
         self.assertTrue(True)
