@@ -19,6 +19,7 @@ logging.basicConfig(format=FORMAT,
 
 
 class RankPosition(models.Model):
+
     """
     Model that carries the user rank based in description and points.
     """
@@ -33,6 +34,7 @@ class RankPosition(models.Model):
 
 
 class BusinemeUser(AbstractUser):
+
     """
     Model for User. Inherits AbstractUser and overrides specific things.
     """
@@ -124,8 +126,8 @@ class BusinemeUser(AbstractUser):
 
     def update_user_password(self, request):
         """
-        This method is used for create the option for change the user's password, 
-        based in object user and his password.
+        This method is used for create the option for change the user's \
+        password, based in object user and his password.
         """
 
         logging.info("update password in progress")
@@ -164,8 +166,9 @@ class BusinemeUser(AbstractUser):
 
     def user_authenticate(self, request):
         """
-        This method is used for authenticate users based in password and username from class 'user'.
-        """    
+        This method is used for authenticate users based in password and \
+        username from \class 'user'.
+        """
 
         username = request.POST['username']
         password = request.POST['password']

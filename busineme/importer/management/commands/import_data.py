@@ -6,6 +6,8 @@ from importer.parser import Parser
 """
 This class is used for populate the database.
 """
+
+
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
