@@ -2,6 +2,9 @@ from django.test import TestCase
 from ..models import Busline
 from ..models import Terminal
 
+"""
+This class is used for create tests some validations in Busline class.
+"""
 
 class TestBusline(TestCase):
 
@@ -20,6 +23,11 @@ class TestBusline(TestCase):
     def test_str(self):
         self.assertEquals(
             "001 - route", self.busline.__str__())
+
+    """
+    This test method is used for analysis if the filter of the number lines
+    is properly executed.
+    """
 
     def test_filter_by_line_number(self):
         bus = self.busline.api_filter_startswith('001')

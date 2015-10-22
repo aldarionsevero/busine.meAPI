@@ -3,7 +3,7 @@ from django.db import IntegrityError
 from ..models import RankPosition, BusinemeUser
 
 """
-This class is used for create tests some validation tests in RankPosition.
+This class is used for create tests some validations in RankPosition.
 """
 
 class TestRankPosition(TestCase):
@@ -42,7 +42,7 @@ class TestRankPosition(TestCase):
         self.assertEquals(1, len(RankPosition.objects.all()))
 
 """
-This class is used for create tests some validation tests in BusinemeUser.
+This class is used for create tests some validation in BusinemeUser.
 """
 
 class TestBusinemeUser(TestCase):
