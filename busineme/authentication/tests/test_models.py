@@ -3,7 +3,7 @@ from django.db import IntegrityError
 from ..models import RankPosition, BusinemeUser
 
 """
-This class is used for create some validation tests in RankPosition.
+This class is used for create tests some validation tests in RankPosition.
 """
 
 class TestRankPosition(TestCase):
@@ -18,8 +18,8 @@ class TestRankPosition(TestCase):
         self.assertEquals("1 - Rank A", self.rank.__str__())
 
     """
-    This test method is used for analysis the fields of the forms so that it no 
-    stay empty.
+    This test method is used for analysis if the fields of the forms so that are
+    not empty.
     """
 
     def test_empty_fields(self):
@@ -29,6 +29,10 @@ class TestRankPosition(TestCase):
         self.rank.description = "Rank A"
         self.assertRaises(IntegrityError, self.rank.save)
 
+    """
+    This test method is used for analysis if the save ranking method is behaving in the correct way.
+    """
+
     def test_save(self):
         self.rank.id = 1
         self.rank.description = "Rank A"
@@ -37,6 +41,9 @@ class TestRankPosition(TestCase):
 
         self.assertEquals(1, len(RankPosition.objects.all()))
 
+"""
+This class is used for create tests some validation tests in BusinemeUser.
+"""
 
 class TestBusinemeUser(TestCase):
 
@@ -55,6 +62,10 @@ class TestBusinemeUser(TestCase):
 
     def test_str(self):
         self.assertEquals("1 - Username email@email.com", self.user.__str__())
+
+    """
+    This test method is used for analysis if the save user is behaving in the correct way.
+    """
 
     def test_save(self):
         self.user.save()
