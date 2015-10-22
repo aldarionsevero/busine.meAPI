@@ -2,6 +2,9 @@ from django.test import TestCase
 from django.db import IntegrityError
 from ..models import RankPosition, BusinemeUser
 
+"""
+This class is used for create some validation tests in RankPosition.
+"""
 
 class TestRankPosition(TestCase):
 
@@ -13,6 +16,11 @@ class TestRankPosition(TestCase):
         self.rank.description = "Rank A"
         self.rank.min_points = 10
         self.assertEquals("1 - Rank A", self.rank.__str__())
+
+    """
+    This test method is used for analysis the fields of the forms so that it no 
+    stay empty.
+    """
 
     def test_empty_fields(self):
         self.assertRaises(IntegrityError, self.rank.save)
