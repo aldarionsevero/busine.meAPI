@@ -1,0 +1,6 @@
+WARNING: 2015-10-22 00:25:26,351 /usr/local/lib/python3.4/site-packages/django/db/backends/sqlite3/base.py:57: RuntimeWarning: SQLite received a naive datetime (2015-10-22 00:25:26.324500) while time zone support is active.
+  RuntimeWarning)
+
+WARNING: 2015-10-22 00:26:17,627 /usr/local/lib/python3.4/site-packages/django/db/backends/sqlite3/base.py:57: RuntimeWarning: SQLite received a naive datetime (2015-10-22 00:26:17.627232) while time zone support is active.
+  RuntimeWarning)
+

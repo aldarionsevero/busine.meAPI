@@ -8,6 +8,10 @@ File to route urls.
 from django.conf.urls import url
 from .views import BuslineSearchResultView
 
+"""
+Defining the urls for the web application for the buslines page.
+"""
+
 urlpatterns = [
     url(r'^buslines/$', BuslineSearchResultView.as_view(),
         name='buslines'),
