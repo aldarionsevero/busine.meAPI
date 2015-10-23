@@ -32,7 +32,6 @@ class RankPosition(models.Model):
     def __str__(self):
         return "{} - {}".format(self.id, self.description)
 
-
 class BusinemeUser(AbstractUser):
 
     """

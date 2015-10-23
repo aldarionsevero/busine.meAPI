@@ -11,7 +11,6 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from core.models import Busline, Terminal, Company
 
-
 class Parser(object):
 
     def import_data(self):
@@ -19,6 +18,11 @@ class Parser(object):
         self.import_terminals()
         self.import_bus_lines()
         self.create_busline_terminal_relation()
+
+    """
+    This method is used for make a reading of the parser file initially
+    for later model the objects.
+    """
 
     def read_file(self, file_name):
         csv_file = open(file_name)
@@ -44,6 +48,11 @@ class Parser(object):
                 print('Busline', row[0], 'has incomplete data.')
             except IntegrityError:
                 print('Busline', row[0], 'already registered.')
+
+    """
+    This method is used for read in parser file the fields referring a terminals and 
+    define the relationship between terminal and busline.
+    """  
 
     def create_busline_terminal_relation(self):
         csv_file = self.read_file('importer/data/bus_lines.csv')
@@ -74,6 +83,10 @@ class Parser(object):
                 print('Error for Busline ', row[0])
                 print('Terminal', row[6], 'does not exist.')
 
+    """
+    This method is used for read in parser file the fields referring a terminals.
+    """                
+
     def import_terminals(self):
         csv_file = self.read_file('importer/data/terminals.csv')
 
@@ -81,6 +94,10 @@ class Parser(object):
 
         for row in csv_file:
             self.import_terminal(row)
+
+    """
+    This method is used for create the objects of terminals.
+    """                
 
     def import_terminal(self, row):
         try:
@@ -90,6 +107,11 @@ class Parser(object):
             terminal = Terminal()
             terminal.description = row[0]
             terminal.save()
+
+    """
+    This method is used for read in parser file the fields referring a companies
+    and create the objects of companies.
+    """                
 
     def import_companies(self):
         csv_file = self.read_file('importer/data/companies.csv')
