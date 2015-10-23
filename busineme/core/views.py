@@ -21,6 +21,7 @@ STATUS_SERVER_ERROR = 500
 This class is used for manage the results of Busline searchs.
 """
 
+
 class BuslineSearchResultView(View):
     http_method_names = [u'get', u'post']
 
@@ -34,7 +35,7 @@ class BuslineSearchResultView(View):
     def get_busline(self, line_number):
         """
         Obtains the required busline based in line's number.
-        """    
+        """
         busline = Busline.api_filter_startswith(line_number)
         json_data = serialize_objects(busline)
 

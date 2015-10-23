@@ -11,6 +11,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from core.models import Busline, Terminal, Company
 
+
 class Parser(object):
 
     def import_data(self):
@@ -50,9 +51,9 @@ class Parser(object):
                 print('Busline', row[0], 'already registered.')
 
     """
-    This method is used for read in parser file the fields referring a terminals and 
-    define the relationship between terminal and busline.
-    """  
+    This method is used for read in parser file the fields referring a
+    terminals and define the relationship between terminal and busline.
+    """
 
     def create_busline_terminal_relation(self):
         csv_file = self.read_file('importer/data/bus_lines.csv')
@@ -84,8 +85,9 @@ class Parser(object):
                 print('Terminal', row[6], 'does not exist.')
 
     """
-    This method is used for read in parser file the fields referring a terminals.
-    """                
+    This method is used for read in parser file the fields referring a
+    terminals.
+    """
 
     def import_terminals(self):
         csv_file = self.read_file('importer/data/terminals.csv')
@@ -97,7 +99,7 @@ class Parser(object):
 
     """
     This method is used for create the objects of terminals.
-    """                
+    """
 
     def import_terminal(self, row):
         try:
@@ -109,9 +111,9 @@ class Parser(object):
             terminal.save()
 
     """
-    This method is used for read in parser file the fields referring a companies
-    and create the objects of companies.
-    """                
+    This method is used for read in parser file the fields referring a
+    companies and create the objects of companies.
+    """
 
     def import_companies(self):
         csv_file = self.read_file('importer/data/companies.csv')

@@ -6,6 +6,7 @@ from ..models import RankPosition, BusinemeUser
 This class is used for create tests some validations in RankPosition.
 """
 
+
 class TestRankPosition(TestCase):
 
     def setUp(self):
@@ -18,8 +19,8 @@ class TestRankPosition(TestCase):
         self.assertEquals("1 - Rank A", self.rank.__str__())
 
     """
-    This test method is used for analysis if the fields of the forms so that are
-    not empty.
+    This test method is used for analysis if the fields of the forms so that
+    are not empty.
     """
 
     def test_empty_fields(self):
@@ -30,7 +31,8 @@ class TestRankPosition(TestCase):
         self.assertRaises(IntegrityError, self.rank.save)
 
     """
-    This test method is used for analysis if the save ranking method is behaving in the correct way.
+    This test method is used for analysis if the save ranking method is
+    behaving in the correct way.
     """
 
     def test_save(self):
@@ -44,6 +46,7 @@ class TestRankPosition(TestCase):
 """
 This class is used for create tests some validation in BusinemeUser.
 """
+
 
 class TestBusinemeUser(TestCase):
 
@@ -64,7 +67,8 @@ class TestBusinemeUser(TestCase):
         self.assertEquals("1 - Username email@email.com", self.user.__str__())
 
     """
-    This test method is used for analysis if the save user is behaving in the correct way.
+    This test method is used for analysis if the save user is behaving in the
+    correct way.
     """
 
     def test_save(self):

@@ -5,6 +5,7 @@ from .models import BusinemeUser
 This class is used for change BusinemeUser in model.
 """
 
+
 class BusinemeUserForm(forms.ModelForm):
 
     """

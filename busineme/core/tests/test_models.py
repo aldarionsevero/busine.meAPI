@@ -6,6 +6,7 @@ from ..models import Terminal
 This class is used for create tests some validations in Busline class.
 """
 
+
 class TestBusline(TestCase):
 
     def setUp(self):
