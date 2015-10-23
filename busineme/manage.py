@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+"""
+Is the 'main' file and is used for execute the aplication.
+"""
+
 import os
 import sys
 
