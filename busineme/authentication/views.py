@@ -8,6 +8,7 @@ for the user authentication and manipulation.
 """
 from django.views.generic import View
 from core.serializers import serialize_objects
+from core.serializers import serialize
 from .models import BusinemeUser
 from django.http import JsonResponse
 from django.contrib.auth import authenticate
@@ -41,6 +42,17 @@ class LoginView(View):
         logging.info("All users request")
 
         json_data = serialize_objects(BusinemeUser.objects.all())
+        return JsonResponse(json_data, content_type='application/json')
+
+    def get_user(self, user_id):
+        """Return a user given a id"""
+
+        try:
+            user = BusinemeUser.objects.get(pk=user_id)
+            json_data = serialize(user)
+        except:
+            json_data = return_message(STATUS_NOT_FOUND)
+
         return JsonResponse(json_data, content_type='application/json')
 
     def post(self, request):
