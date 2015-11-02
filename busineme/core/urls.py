@@ -6,6 +6,7 @@ Técnicas de Programação, 2/2015
 File to route urls.
 """
 from django.conf.urls import url
+from .views import TerminalSearchResultView
 from .views import BuslineSearchResultView
 
 """
@@ -17,4 +18,10 @@ urlpatterns = [
         name='buslines'),
     url(r'^buslines/(?P<busline_id>[0-9]+)/$',
         BuslineSearchResultView.get_busline),
+
+    url(r'^terminals/$', TerminalSearchResultView.as_view(),
+        name='terminals'),
+    url(r'^terminals/(?P<terminal_id>[0-9]+)/$',
+        TerminalSearchResultView.get_terminal),
+
 ]
