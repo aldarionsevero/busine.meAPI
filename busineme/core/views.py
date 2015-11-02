@@ -12,6 +12,7 @@ from core.serializers import serialize_objects
 from core.serializers import serialize
 from .models import Terminal
 from .models import Busline
+from .models import Post
 from django.http import JsonResponse
 from core.return_message import return_message
 
@@ -71,6 +72,31 @@ class TerminalSearchResultView(View):
         try:
             terminal = Terminal.objects.get(pk=terminal_id)
             json_data = serialize(terminal)
+        except:
+            json_data = return_message(STATUS_NOT_FOUND)
+        return JsonResponse(json_data, content_type='application/json')
+
+
+class PostView(View):
+    http_method_names = [u'get', u'post']
+
+    def get(self, request):
+        """
+        Returns posts.
+        """
+        filters = request.GET.dict()
+        posts = Post.objects.filter(**filters)
+        json_data = serialize_objects(posts)
+        return JsonResponse(json_data, content_type='application/json')
+
+    def get_post(self, post_id):
+        """
+        Obtains the required terminal based in line's number.
+        """
+        # terminal = get_object_or_404(terminal, pk=terminal_id)
+        try:
+            post = Post.objects.get(pk=post_id)
+            json_data = serialize(post)
         except:
             json_data = return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')

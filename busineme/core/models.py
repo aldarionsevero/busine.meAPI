@@ -113,6 +113,16 @@ class Post(models.Model):
     time = models.TimeField(auto_now=True)
     user = models.ForeignKey(BusinemeUser)
 
+    serialize_fields = ['comment',
+                        'latitude',
+                        'longitude',
+                        'traffic',
+                        'capacity',
+                        'busline',
+                        'date',
+                        'time',
+                        'user']
+
     def __str__(self):
         return 'id: %s date: %s %s busline_id: %s' % (self.id, str(self.date),
                                                       str(self.time),

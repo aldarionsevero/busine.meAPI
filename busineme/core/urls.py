@@ -8,6 +8,7 @@ File to route urls.
 from django.conf.urls import url
 from .views import TerminalSearchResultView
 from .views import BuslineSearchResultView
+from .views import PostView
 
 """
 Defining the urls for the web application for the buslines page.
@@ -23,5 +24,10 @@ urlpatterns = [
         name='terminals'),
     url(r'^terminals/(?P<terminal_id>[0-9]+)/$',
         TerminalSearchResultView.get_terminal),
+
+    url(r'^posts/$', PostView.as_view(),
+        name='posts'),
+    url(r'^posts/(?P<post_id>[0-9]+)/$',
+        PostView.get_post),
 
 ]
