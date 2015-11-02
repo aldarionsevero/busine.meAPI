@@ -12,6 +12,8 @@ from core.serializers import serialize_objects, serialize
 from .models import Busline
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from core.return_message import return_message
+
 
 STATUS_OK = 200
 STATUS_CREATED = 201
@@ -30,7 +32,6 @@ class BuslineSearchResultView(View):
         """
         Returns all users.
         """
-        print(request.GET.dict())
         filters = request.GET.dict()
         buslines = Busline.objects.filter(**filters)
         json_data = serialize_objects(buslines)
@@ -40,7 +41,10 @@ class BuslineSearchResultView(View):
         """
         Obtains the required busline based in line's number.
         """
-        busline = get_object_or_404(Busline, pk=busline_id)
-        json_data = serialize(busline)
-
+        # busline = get_object_or_404(Busline, pk=busline_id)
+        try:
+            busline = Busline.objects.get(pk=busline_id)
+            json_data = serialize(busline)
+        except:
+            json_data = return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')

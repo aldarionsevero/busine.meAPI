@@ -7,7 +7,7 @@ File to define default return messages
 """
 
 
-def return_message(self, status_code):
+def return_message(status_code):
     """
     Return a dict with the status code and messages.
     """
