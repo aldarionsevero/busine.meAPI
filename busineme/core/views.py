@@ -8,9 +8,10 @@ for the user authentication and manipulation.
 """
 
 from django.views.generic import View
-from core.serializers import serialize_objects
+from core.serializers import serialize_objects, serialize
 from .models import Busline
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 STATUS_OK = 200
 STATUS_CREATED = 201
@@ -29,31 +30,17 @@ class BuslineSearchResultView(View):
         """
         Returns all users.
         """
-        json_data = serialize_objects(Busline.objects.all())
+        print(request.GET.dict())
+        filters = request.GET.dict()
+        buslines = Busline.objects.filter(**filters)
+        json_data = serialize_objects(buslines)
         return JsonResponse(json_data, content_type='application/json')
 
-    def get_busline(self, line_number):
+    def get_busline(self, busline_id):
         """
         Obtains the required busline based in line's number.
         """
-        busline = Busline.api_filter_startswith(line_number)
-        json_data = serialize_objects(busline)
+        busline = get_object_or_404(Busline, pk=busline_id)
+        json_data = serialize(busline)
 
         return JsonResponse(json_data, content_type='application/json')
-
-    def get_description(self, description):
-
-        busline = Busline.filter_by_description(description)
-        json_data_buslines_description = serialize_objects(busline)
-
-        return JsonResponse(json_data_buslines_description,
-                            content_type='application/json')
-
-    def get_line_description(self, line_number, description):
-        """
-        Obtains the description of required busline based in line's number.
-        """
-        buslines_line_description = \
-            Busline.filter_by_line_description(line_number, description)
-
-        return buslines_line_description
