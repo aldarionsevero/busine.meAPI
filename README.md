@@ -2,5 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/github/aldarionsevero/busine.meAPI/badges/gpa.svg)](https://codeclimate.com/github/aldarionsevero/busine.meAPI)
 
+[![Code Health](https://landscape.io/github/aldarionsevero/busine.meAPI/serch_proper_url/landscape.svg?style=flat)](https://landscape.io/github/aldarionsevero/busine.meAPI/serch_proper_url)
+
 # busine.meAPI
 
