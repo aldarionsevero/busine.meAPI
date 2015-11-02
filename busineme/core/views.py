@@ -11,7 +11,6 @@ from django.views.generic import View
 from core.serializers import serialize_objects, serialize
 from .models import Busline
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
 from core.return_message import return_message
 
 
