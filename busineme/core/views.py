@@ -1,7 +1,7 @@
 """
 Busine-me API
 Universidade de Brasilia - FGA
-Técnicas de Programação, 2/2015
+Tecnicas de Programacao, 2/2015
 @file views.py
 Views (on classic MVC, controllers) with methods that control the requisitions
 for the user authentication and manipulation.
