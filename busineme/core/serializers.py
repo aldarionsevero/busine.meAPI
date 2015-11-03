@@ -1,7 +1,7 @@
 """
 Busine-me API
 Universidade de Brasilia - FGA
-Técnicas de Programação, 2/2015
+Tecnicas de Programacao, 2/2015
 @file serializers.py
 Methods to serialize objects.
 """

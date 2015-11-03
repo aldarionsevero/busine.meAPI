@@ -1,7 +1,7 @@
 """
 Busine-me API
 Universidade de Brasilia - FGA
-Tecnicas de Programação, 2/2015
+Tecnicas de Programacao, 2/2015
 @file models.py
 Models for User an Rank.
 """
