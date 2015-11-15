@@ -69,6 +69,22 @@ class Busline(models.Model):
         return buslines_line_description
 
 
+class Favorite(models.Model):
+    """
+    Favorite Model
+    """
+
+
+    user = models.ForeignKey(BusinemeUser)
+    busline = models.ForeignKey('Busline')
+
+    def __str__(self):
+        return "{} - {}".format(self.user.username, self.busline.line_number)
+
+
+
+
+
 class Company(models.Model):
 
     """

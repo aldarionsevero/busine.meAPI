@@ -100,3 +100,30 @@ class PostView(View):
         except:
             json_data = return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')
+
+
+
+
+class FavoriteView(View):
+    http_method_names = [u'get', u'post']
+
+
+    def get(self, request):
+        """
+        return buslines given a specific user
+        """
+
+        user = request.POST['user']
+        busline = request.POST['busline']
+
+        favorite = Favorite.objects.get(user=user,busline=busline)
+
+        if(favorite is not None):
+            new_favorite = Favorite()
+
+            new_favorite.user = user
+            new_favorite.busline = busline
+            new_favorite.save()
+
+        else:
+            favorite.delete()

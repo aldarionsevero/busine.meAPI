@@ -9,7 +9,7 @@ from django.conf.urls import url
 from .views import LoginView
 
 """
-Defining the urls for the web application for the users page.
+Defining the urls of the web application for  users' page.  
 """
 
 urlpatterns = [
