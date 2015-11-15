@@ -13,6 +13,7 @@ from core.serializers import serialize
 from .models import Terminal
 from .models import Busline
 from .models import Post
+from .models import Favorite
 from django.http import JsonResponse
 from core.return_message import return_message
 
@@ -22,12 +23,12 @@ STATUS_CREATED = 201
 STATUS_NOT_FOUND = 404
 STATUS_SERVER_ERROR = 500
 
-"""
-This class is used for manage the results of Busline searchs.
-"""
-
 
 class BuslineSearchResultView(View):
+
+    """
+    This class is used for manage the results of Busline searchs.
+    """
     http_method_names = [u'get', u'post']
 
     def get(self, request):
@@ -102,11 +103,8 @@ class PostView(View):
         return JsonResponse(json_data, content_type='application/json')
 
 
-
-
 class FavoriteView(View):
     http_method_names = [u'get', u'post']
-
 
     def get(self, request):
         """
@@ -116,7 +114,7 @@ class FavoriteView(View):
         user = request.POST['user']
         busline = request.POST['busline']
 
-        favorite = Favorite.objects.get(user=user,busline=busline)
+        favorite = Favorite.objects.get(user=user, busline=busline)
 
         if(favorite is not None):
             new_favorite = Favorite()
