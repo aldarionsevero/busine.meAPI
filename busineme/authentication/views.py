@@ -11,7 +11,6 @@ from core.serializers import serialize_objects
 from core.serializers import serialize
 from .models import BusinemeUser
 from django.http import JsonResponse
-from django.contrib.auth import authenticate
 from core.return_message import return_message
 import logging
 

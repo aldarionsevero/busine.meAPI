@@ -6,9 +6,7 @@ Tecnicas de Programacao, 2/2015
 Models for User an Rank.
 """
 from django.contrib.auth.models import AbstractUser
-from django.contrib.auth import authenticate
 from django.db import models
-from django.http import HttpResponse
 import logging
 
 
@@ -60,5 +58,3 @@ class BusinemeUser(AbstractUser):
 
     def __str__(self):
         return "{} - {} {}".format(self.id, self.username, self.email)
-
-
