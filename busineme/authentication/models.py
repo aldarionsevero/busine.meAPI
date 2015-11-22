@@ -118,6 +118,9 @@ class BusinemeUser(AbstractUser):
         self.save()
 
     def update_user_password(self, request):
+        """
+        Take a request from application and modify the name of the user.
+        """
 
         logging.info("update password in progress")
 
@@ -154,6 +157,9 @@ class BusinemeUser(AbstractUser):
         return response
 
     def user_authenticate(self, request):
+        """
+        Certifies that there is a user in the db and returns it.
+        """
         username = request.POST['username']
         password = request.POST['password']
 
