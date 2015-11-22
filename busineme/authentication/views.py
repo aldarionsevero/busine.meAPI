@@ -34,7 +34,7 @@ Class used to control the views from login of users.
 class LoginView(View):
     http_method_names = [u'get', u'post']
 
-    def get(self):
+    def get(self, request):
         """
         Returns all users.
         """
@@ -44,7 +44,7 @@ class LoginView(View):
         json_data = serialize_objects(BusinemeUser.objects.all())
         return JsonResponse(json_data, content_type='application/json')
 
-    def get_user(self, user_id):
+    def get_user(self, request, user_id):
         """Return a user given a id"""
 
         try:
