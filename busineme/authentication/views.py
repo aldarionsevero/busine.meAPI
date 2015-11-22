@@ -44,7 +44,7 @@ class LoginView(View):
         json_data = serialize_objects(BusinemeUser.objects.all())
         return JsonResponse(json_data, content_type='application/json')
 
-    def get_user(self, request, user_id):
+    def get_user(self, user_id):
         """Return a user given a id"""
 
         try:
