@@ -31,10 +31,11 @@ class TestLoginView(TestCase):
         rank.save()
         user.rank = rank
         user.save()
-        print (user.id)
         user = BusinemeUser.objects.get(username="test-user")
-        print (user.id)
         response = self.client.get('/auth/users/'+str(user.id)+'/')
         self.assertEquals(response.status_code, 200)
 
-
+    
+    def test_get_user_NOT_FOUND(self):
+        response = self.client.get('/auth/users/10000/')
+        self.assertEquals(response.status_code, 200)
