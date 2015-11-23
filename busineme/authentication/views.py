@@ -22,7 +22,7 @@ STATUS_SERVER_ERROR = 500
 
 FORMAT = '%(levelname)s: %(asctime)s %(message)s'
 logging.basicConfig(format=FORMAT,
-                    filename='authentication/logging/modelsLogging.log',
+                    filename='authentication/logging/viewsLogging.log',
                     level=logging.DEBUG)
 
 
@@ -33,9 +33,7 @@ class LoginView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """
-        Returns all users.
-        """
+        """Returns all users."""
 
         logging.info("All users request")
 
@@ -48,7 +46,7 @@ class LoginView(View):
         try:
             user = BusinemeUser.objects.get(pk=user_id)
             json_data = serialize(user)
-        except:
+        except BusinemeUser.DoesNotExist:
             json_data = return_message(STATUS_NOT_FOUND)
 
         return JsonResponse(json_data, content_type='application/json')
