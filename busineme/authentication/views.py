@@ -25,12 +25,11 @@ logging.basicConfig(format=FORMAT,
                     filename='authentication/logging/modelsLogging.log',
                     level=logging.DEBUG)
 
-"""
-Class used to control the views from login of users.
-"""
-
 
 class LoginView(View):
+
+    """Class used to control the views from login of users."""
+
     http_method_names = [u'get', u'post']
 
     def get(self, request):
