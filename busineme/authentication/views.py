@@ -36,6 +36,7 @@ class LoginView(View):
         """Returns all users."""
 
         logging.info("All users request")
+        print(request)
 
         json_data = serialize_objects(BusinemeUser.objects.all())
         return JsonResponse(json_data, content_type='application/json')
