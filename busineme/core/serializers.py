@@ -38,8 +38,8 @@ def serialize_objects(object_list):
     """
     json_dict = {}
     json_list = []
-    for object in object_list:
-        json_list.append(serialize(object))
+    for object_ in object_list:
+        json_list.append(serialize(object_))
     json_dict["objects"] = json_list
     return json_dict
 
@@ -50,6 +50,6 @@ def serialize_list(many_to_many_field):
     """
     object_list = many_to_many_field.all()
     json_list = []
-    for object in object_list:
-        json_list.append(serialize(object))
+    for object_ in object_list:
+        json_list.append(serialize(object_))
     return json_list

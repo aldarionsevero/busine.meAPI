@@ -26,29 +26,25 @@ STATUS_SERVER_ERROR = 500
 
 class BuslineSearchResultView(View):
 
-    """
-    This class is used for manage the results of Busline searchs.
-    """
+    """This class is used for manage the results of Busline searchs."""
+
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """
-        Returns all users.
-        """
+        """Returns all users."""
+
         filters = request.GET.dict()
         buslines = Busline.objects.filter(**filters)
         json_data = serialize_objects(buslines)
         return JsonResponse(json_data, content_type='application/json')
 
     def get_busline(self, busline_id):
-        """
-        Obtains the required busline based in line's number.
-        """
+        """Obtains the required busline based in line's number."""
         # busline = get_object_or_404(Busline, pk=busline_id)
         try:
             busline = Busline.objects.get(pk=busline_id)
             json_data = serialize(busline)
-        except:
+        except Busline.DoesNotExist:
             json_data = return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')
 
@@ -57,23 +53,20 @@ class TerminalSearchResultView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """
-        Returns all users.
-        """
+        """Returns all users."""
+
         filters = request.GET.dict()
         terminals = Terminal.objects.filter(**filters)
         json_data = serialize_objects(terminals)
         return JsonResponse(json_data, content_type='application/json')
 
     def get_terminal(self, terminal_id):
-        """
-        Obtains the required terminal based in line's number.
-        """
-        # terminal = get_object_or_404(terminal, pk=terminal_id)
+        """Obtains the required terminal based in line's number."""
+
         try:
             terminal = Terminal.objects.get(pk=terminal_id)
             json_data = serialize(terminal)
-        except:
+        except Terminal.DoesNotExist:
             json_data = return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')
 
@@ -82,23 +75,20 @@ class PostView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """
-        Returns posts.
-        """
+        """Returns posts."""
+
         filters = request.GET.dict()
         posts = Post.objects.filter(**filters)
         json_data = serialize_objects(posts)
         return JsonResponse(json_data, content_type='application/json')
 
     def get_post(self, post_id):
-        """
-        Obtains the required terminal based in line's number.
-        """
-        # terminal = get_object_or_404(terminal, pk=terminal_id)
+        """Obtains the required terminal based in line's number."""
+
         try:
             post = Post.objects.get(pk=post_id)
             json_data = serialize(post)
-        except:
+        except Post.DoesNotExist:
             json_data = return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')
 
@@ -107,9 +97,7 @@ class FavoriteView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """
-        return buslines given a specific user
-        """
+        """return buslines given a specific user]"""
 
         user = request.POST['user']
         busline = request.POST['busline']

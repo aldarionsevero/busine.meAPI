@@ -20,11 +20,6 @@ class Parser(object):
         self.import_bus_lines()
         self.create_busline_terminal_relation()
 
-    """
-    This method is used for make a reading of the parser file initially
-    for later model the objects.
-    """
-
     def read_file(self, file_name):
         csv_file = open(file_name)
         csv_file = csv.reader(csv_file, delimiter=',', quotechar="'")
@@ -50,12 +45,10 @@ class Parser(object):
             except IntegrityError:
                 print('Busline', row[0], 'already registered.')
 
-    """
-    This method is used for read in parser file the fields referring a
-    terminals and define the relationship between terminal and busline.
-    """
-
     def create_busline_terminal_relation(self):
+        """This method is used for read in parser file the fields referring a
+        terminals and define the relationship between terminal and busline.
+        """
         csv_file = self.read_file('importer/data/bus_lines.csv')
 
         print('Creating Busline-Terminal relation...')
@@ -84,12 +77,11 @@ class Parser(object):
                 print('Error for Busline ', row[0])
                 print('Terminal', row[6], 'does not exist.')
 
-    """
-    This method is used for read in parser file the fields referring a
-    terminals.
-    """
-
     def import_terminals(self):
+        """
+        This method is used for read in parser file the fields referring a
+        terminals.
+        """
         csv_file = self.read_file('importer/data/terminals.csv')
 
         print('Importing Terminals...')
@@ -97,11 +89,10 @@ class Parser(object):
         for row in csv_file:
             self.import_terminal(row)
 
-    """
-    This method is used for create the objects of terminals.
-    """
-
     def import_terminal(self, row):
+        """
+        This method is used for creating the objects of terminals.
+        """
         try:
             Terminal.objects.get(description=row[0])
             print('Terminal', row[0], 'already registered')
@@ -110,12 +101,11 @@ class Parser(object):
             terminal.description = row[0]
             terminal.save()
 
-    """
-    This method is used for read in parser file the fields referring a
-    companies and create the objects of companies.
-    """
-
     def import_companies(self):
+        """
+        This method is used for read in parser file the fields referring a
+        companies and create the objects of companies.
+        """
         csv_file = self.read_file('importer/data/companies.csv')
 
         print('Importing Companies...')

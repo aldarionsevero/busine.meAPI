@@ -10,9 +10,6 @@ from .views import TerminalSearchResultView
 from .views import BuslineSearchResultView
 from .views import PostView
 
-"""
-Defining the urls for the web application for the buslines page.
-"""
 
 urlpatterns = [
     url(r'^buslines/$', BuslineSearchResultView.as_view(),
