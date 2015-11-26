@@ -33,7 +33,9 @@ class LoginView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """Returns all users."""
+        """
+        Returns all users.
+        """
 
         logging.info("All users request")
         print(request)

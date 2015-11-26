@@ -32,7 +32,7 @@ class BuslineSearchResultView(View):
 
     def get(self, request):
         """
-        Returns all users.
+        Returns all buslines in a json list.
         """
 
         filters = request.GET.dict()
@@ -57,7 +57,7 @@ class TerminalSearchResultView(View):
 
     def get(self, request):
         """
-        Returns all users.
+        Returns all Terminals in a json list.
         """
 
         filters = request.GET.dict()
@@ -83,7 +83,7 @@ class PostView(View):
 
     def get(self, request):
         """
-        Returns posts.
+        Returns all posts in a json list.
         """
 
         filters = request.GET.dict()
