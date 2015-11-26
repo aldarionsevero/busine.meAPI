@@ -2,6 +2,7 @@ from django.test import TestCase
 from ..models import Busline
 from ..models import Terminal
 from ..models import Favorite
+from ..models import Company
 from authentication.models import BusinemeUser
 
 """
@@ -66,3 +67,16 @@ class TestFavorite(TestCase):
     def test_str(self):
         self.assertEquals(
             "testuser - 001", self.favorite.__str__())
+
+
+class TestCompany(TestCase):
+
+    def setUp(self):
+        self.company = Company()
+
+        self.company.name = "CompanyTestName"
+        self.company.save()
+
+    def test_str(self):
+        self.assertEquals(
+            "CompanyTestName", self.company.__str__())
