@@ -128,3 +128,13 @@ class TestPost(TestCase):
 
     def test_api_all(self):
         self.assertEquals(1, self.post.api_all().count())
+
+    def test_api_filter_contains(self):
+        busline = self.busline
+        self.assertEquals(1, self.post.api_filter_contains(busline).count())
+
+    # def test_api_get(self):
+    #     post = self.post
+    #     post_list = []
+    #     post_list = self.post.api_get(post.id)
+    #     self.assertEquals(1, post_list.count())
