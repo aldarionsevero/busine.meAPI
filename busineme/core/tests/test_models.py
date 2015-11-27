@@ -125,3 +125,6 @@ class TestPost(TestCase):
         self.assertEquals(
             "id: 1 date: %s %s busline_id: 1" % (self.date_now, self.time_now),
             self.post.__str__())
+
+    def test_api_all(self):
+        self.assertEquals(1, self.post.api_all().count())
