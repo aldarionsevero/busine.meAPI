@@ -39,7 +39,7 @@ class TestBusline(TestCase):
         bus = self.busline.api_filter_startswith('001')
         self.assertEquals(bus[0], self.busline)
 
-    def test_filter_by_description(self):
+    def test_filter_by_line_description(self):
         bus = self.busline.filter_by_line_description("001", "route")
         self.assertEquals(1, bus.count())
 
