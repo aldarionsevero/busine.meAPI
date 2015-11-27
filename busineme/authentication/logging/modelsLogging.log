@@ -980,3 +980,5 @@ DEBUG: 2015-11-22 22:31:53,448 CREATE INDEX "django_session_de54fa62" ON "django
 INFO: 2015-11-22 22:31:54,718 All users request
 DEBUG: 2015-11-25 01:18:33,528 (0.007) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
 DEBUG: 2015-11-25 01:18:33,550 (0.000) QUERY = u'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+DEBUG: 2015-11-27 00:12:37,472 (0.034) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+DEBUG: 2015-11-27 00:12:37,490 (0.000) QUERY = u'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
