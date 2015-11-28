@@ -1,10 +1,11 @@
 from django.test import TestCase
 from django.test import Client
 from ..models import Busline
-from ..models import Post
 from ..models import Terminal
 
 STATUS_OK = 200
+STATUS_NOT_FOUND = 404
+BUSLINE_NOT_FOUND_ID = 99999999
 
 
 class TestSearchResultView(TestCase):
@@ -32,5 +33,11 @@ class TestSearchResultView(TestCase):
         bus = Busline.objects.get(description="route")
         response = self.client.get(
             "/buslines/" + str(bus.id) + "/")
+        code = response.status_code
+        self.assertEquals(code, STATUS_OK)
+
+    def test_get_busline_not_found(self):
+        response = self.client.get(
+            '/buslines/' + str(BUSLINE_NOT_FOUND_ID) + "/")
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
