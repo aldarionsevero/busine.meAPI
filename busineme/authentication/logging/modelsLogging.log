@@ -982,3 +982,5 @@ DEBUG: 2015-11-25 01:18:33,528 (0.007) QUERY = "\n            SELECT name, type 
 DEBUG: 2015-11-25 01:18:33,550 (0.000) QUERY = u'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
 DEBUG: 2015-11-27 00:12:37,472 (0.034) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
 DEBUG: 2015-11-27 00:12:37,490 (0.000) QUERY = u'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+DEBUG: 2015-11-29 22:37:42,516 (0.034) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+DEBUG: 2015-11-29 22:37:42,556 (0.000) QUERY = u'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
