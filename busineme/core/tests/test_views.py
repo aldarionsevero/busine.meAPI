@@ -41,3 +41,24 @@ class TestSearchResultView(TestCase):
             '/buslines/' + str(BUSLINE_NOT_FOUND_ID) + "/")
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
+
+
+class TestTerminalSearchResultView(TestCase):
+
+    def setUp(self):
+        self.terminal = Terminal()
+
+        self.terminal.description = "Terminal Description Test String"
+        self.terminal.addres = "Terminal Adress Test String "
+        self.terminal.save()
+
+    def test_get(self):
+        response = self.client.get("/terminals/")
+        code = response.status_code
+        self.assertEquals(code, STATUS_OK)
+
+    def test_get_terminal(self):
+        terminal = self.terminal.id
+        response = self.client.get("/terminals/%s/" % str(terminal))
+        code = response.status_code
+        self.assertEquals(code, STATUS_OK)
