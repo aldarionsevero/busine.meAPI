@@ -1,3 +1,10 @@
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Tecnicas de Programacao, 2/2015
+@file models.py
+Testing models authentication.
+"""
 from django.test import TestCase
 from django.db import IntegrityError
 from ..models import RankPosition, BusinemeUser
