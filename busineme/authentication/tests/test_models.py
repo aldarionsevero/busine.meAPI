@@ -57,6 +57,10 @@ This class is used for create tests some validation in BusinemeUser.
 
 class TestBusinemeUser(TestCase):
 
+    """
+    This test method is used for make the tests in changes on the user.
+    """
+
     def setUp(self):
         self.user = BusinemeUser()
         self.rank = RankPosition()
