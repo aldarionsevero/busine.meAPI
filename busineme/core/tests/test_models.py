@@ -1,3 +1,10 @@
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Tecnicas de Programacao, 2/2015
+@file test_models.py
+Testing models busline.
+"""
 from django.test import TestCase
 from ..models import Busline
 from ..models import Terminal
@@ -79,6 +86,11 @@ class TestFavorite(TestCase):
             "testuser - 001", self.favorite.__str__())
 
 
+"""
+This class is used for create tests some validations in company class.
+"""
+
+
 class TestCompany(TestCase):
 
     def setUp(self):
@@ -90,6 +102,11 @@ class TestCompany(TestCase):
     def test_str(self):
         self.assertEquals(
             "CompanyTestName", self.company.__str__())
+
+
+"""
+This class is used for create tests some validations in 'terminal' class.
+"""
 
 
 class TestTerminal(TestCase):
@@ -104,6 +121,11 @@ class TestTerminal(TestCase):
     def test_str(self):
         self.assertEquals(
             "Terminal Description Test String", self.terminal.__str__())
+
+
+"""
+This class is used for create tests some validations in 'post' class.
+"""
 
 
 class TestPost(TestCase):
