@@ -25,7 +25,7 @@ class TestLoginView(TestCase):
         self.client = Client()
 
     """
-    This test method is used for analysis of method obtain user is taking place 
+    This test method is used for analysis of method obtain user is taking place
     in the correct way.
     """
 
@@ -34,7 +34,7 @@ class TestLoginView(TestCase):
         self.assertEquals(response.status_code, 200)
 
     """
-    This test method is used for analysis of if the method is behaving in the 
+    This test method is used for analysis of if the method is behaving in the
     correct way.
     """
 

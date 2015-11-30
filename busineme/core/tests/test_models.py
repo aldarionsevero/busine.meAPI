@@ -60,8 +60,8 @@ class TestBusline(TestCase):
         self.assertEquals(1, bus.count())
 
     """
-    This test method is used for analysis if the filter of the description lines
-    is properly executed.
+    This test method is used for analysis if the filter of the description
+    lines is properly executed.
     """
 
     def test_filter_by_line_description(self):
