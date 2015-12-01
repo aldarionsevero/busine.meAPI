@@ -990,3 +990,15 @@ DEBUG: 2015-11-29 23:20:53,079 (0.001) QUERY = "\n            SELECT name, type 
 DEBUG: 2015-11-29 23:20:53,084 (0.000) QUERY = u'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
 DEBUG: 2015-11-29 23:21:30,472 (0.007) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
 DEBUG: 2015-11-29 23:21:30,478 (0.000) QUERY = u'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
+WARNING: 2015-11-30 18:35:44,905 /usr/local/lib/python3.4/site-packages/django/db/backends/sqlite3/base.py:57: RuntimeWarning: SQLite received a naive datetime (2015-11-30 18:35:44.878736) while time zone support is active.
+  RuntimeWarning)
+
+DEBUG: 2015-11-30 18:36:02,893 (0.000) QUERY = 'SELECT "core_company"."id", "core_company"."name" FROM "core_company" WHERE "core_company"."name" = %s' - PARAMS = ('LOTAXI',); args=('LOTAXI',)
+WARNING: 2015-11-30 18:36:09,156 /usr/local/lib/python3.4/site-packages/django/db/backends/sqlite3/base.py:57: RuntimeWarning: SQLite received a naive datetime (2015-11-30 18:36:09.155700) while time zone support is active.
+  RuntimeWarning)
+
+DEBUG: 2015-11-30 18:36:22,757 (0.000) QUERY = "\n            SELECT name, type FROM sqlite_master\n            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'\n            ORDER BY name" - PARAMS = (); args=None
+DEBUG: 2015-11-30 18:36:22,771 (0.000) QUERY = u'BEGIN' - PARAMS = (); args=None
+DEBUG: 2015-11-30 18:36:22,772 CREATE TABLE "django_migrations" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "app" varchar(255) NOT NULL, "name" varchar(255) NOT NULL, "applied" datetime NOT NULL); (params None)
+DEBUG: 2015-11-30 18:36:22,773 (0.001) QUERY = u'CREATE TABLE "django_migrations" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "app" varchar(255) NOT NULL, "name" varchar(255) NOT NULL, "applied" datetime NOT NULL)' - PARAMS = (); args=None
+DEBUG: 2015-11-30 18:36:23,130 (0.000) QUERY = u'SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"' - PARAMS = (); args=()
