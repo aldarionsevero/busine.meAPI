@@ -31,7 +31,9 @@ class BuslineSearchResultView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """Returns all users."""
+        """
+        Returns all buslines in a json list.
+        """
 
         filters = request.GET.dict()
         buslines = Busline.objects.filter(**filters)
@@ -39,8 +41,9 @@ class BuslineSearchResultView(View):
         return JsonResponse(json_data, content_type='application/json')
 
     def get_busline(self, busline_id):
-        """Obtains the required busline based in line's number."""
-        # busline = get_object_or_404(Busline, pk=busline_id)
+        """
+        Obtains the required busline based in line's number.
+        """
         try:
             busline = Busline.objects.get(pk=busline_id)
             json_data = serialize(busline)
@@ -53,7 +56,9 @@ class TerminalSearchResultView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """Returns all users."""
+        """
+        Returns all Terminals in a json list.
+        """
 
         filters = request.GET.dict()
         terminals = Terminal.objects.filter(**filters)
@@ -61,7 +66,9 @@ class TerminalSearchResultView(View):
         return JsonResponse(json_data, content_type='application/json')
 
     def get_terminal(self, terminal_id):
-        """Obtains the required terminal based in line's number."""
+        """
+        Obtains the required terminal based in line's number.
+        """
 
         try:
             terminal = Terminal.objects.get(pk=terminal_id)
@@ -75,7 +82,9 @@ class PostView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """Returns posts."""
+        """
+        Returns all posts in a json list.
+        """
 
         filters = request.GET.dict()
         posts = Post.objects.filter(**filters)
@@ -83,7 +92,9 @@ class PostView(View):
         return JsonResponse(json_data, content_type='application/json')
 
     def get_post(self, post_id):
-        """Obtains the required terminal based in line's number."""
+        """
+        Obtains the required terminal based in line's number.
+        """
 
         try:
             post = Post.objects.get(pk=post_id)
@@ -97,7 +108,10 @@ class FavoriteView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        """return buslines given a specific user]"""
+        """
+        Generate a new favorite if the search in db return nothing.
+        If the db return something this favorite is deleted.
+        """
 
         user = request.POST['user']
         busline = request.POST['busline']

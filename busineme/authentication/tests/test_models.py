@@ -1,3 +1,10 @@
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Tecnicas de Programacao, 2/2015
+@file models.py
+Testing models authentication.
+"""
 from django.test import TestCase
 from django.db import IntegrityError
 from ..models import RankPosition, BusinemeUser
@@ -49,6 +56,10 @@ This class is used for create tests some validation in BusinemeUser.
 
 
 class TestBusinemeUser(TestCase):
+
+    """
+    This test method is used for make the tests in changes on the user.
+    """
 
     def setUp(self):
         self.user = BusinemeUser()
