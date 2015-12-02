@@ -1,3 +1,10 @@
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Tecnicas de Programacao, 2/2015
+@file models.py
+Model for user authentication.
+"""
 from authentication.models import BusinemeUser
 
 

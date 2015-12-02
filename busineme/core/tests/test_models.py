@@ -1,3 +1,10 @@
+"""
+Busine-me API
+Universidade de Brasilia - FGA
+Tecnicas de Programacao, 2/2015
+@file test_models.py
+Testing models core.
+"""
 from django.test import TestCase
 from ..models import Busline
 from ..models import Terminal
@@ -13,6 +20,10 @@ This class is used for create tests some validations in Busline class.
 
 
 class TestBusline(TestCase):
+
+    """
+    This test method is used for make the tests in changes on the buslines.
+    """
 
     def setUp(self):
         self.busline = Busline()
@@ -39,9 +50,19 @@ class TestBusline(TestCase):
         bus = self.busline.api_filter_startswith('001')
         self.assertEquals(bus[0], self.busline)
 
+    """
+    This test method is used for analysis if the filter of the description bus
+    is properly executed.
+    """
+
     def test_filter_by_description(self):
         bus = self.busline.filter_by_description('route')
         self.assertEquals(1, bus.count())
+
+    """
+    This test method is used for analysis if the filter of the description
+    lines is properly executed.
+    """
 
     def test_filter_by_line_description(self):
         bus = self.busline.filter_by_line_description("001", "route")
@@ -79,6 +100,11 @@ class TestFavorite(TestCase):
             "testuser - 001", self.favorite.__str__())
 
 
+"""
+This class is used for create tests some validations in company class.
+"""
+
+
 class TestCompany(TestCase):
 
     def setUp(self):
@@ -90,6 +116,11 @@ class TestCompany(TestCase):
     def test_str(self):
         self.assertEquals(
             "CompanyTestName", self.company.__str__())
+
+
+"""
+This class is used for create tests some validations in 'terminal' class.
+"""
 
 
 class TestTerminal(TestCase):
@@ -104,6 +135,11 @@ class TestTerminal(TestCase):
     def test_str(self):
         self.assertEquals(
             "Terminal Description Test String", self.terminal.__str__())
+
+
+"""
+This class is used for create tests some validations in 'post' class.
+"""
 
 
 class TestPost(TestCase):

@@ -58,3 +58,116 @@ class BusinemeUser(AbstractUser):
 
     def __str__(self):
         return "{} - {} {}".format(self.id, self.username, self.email)
+
+    def create_user(self, request):
+        """
+        PUT method for create an user by receiving
+        four arguments from application, using POST method for security.
+        """
+
+        logging.info("create user in progress")
+
+        self.username = request.POST['username']
+        self.first_name = request.POST['first_name']
+        self.last_name = request.POST['last_name']
+        self.set_password(request.POST['password'])
+
+        username = self.username
+        first_name = self.first_name
+        email = self.email
+
+        assert self is not None
+        assert username is not None
+        assert first_name is not None
+        assert email is not None
+
+        assert username != ''
+        assert first_name != ''
+        assert email != ''
+
+        records = {"username": username,
+                   "first_name": first_name,
+                   "email": email}
+        logging.debug("BusinemeUser create INFO: %s", records)
+
+        self.save()
+
+    def update_user_first_last_name(self, request):
+        """
+        Define method for update first_name and last_name given a
+        specific BuslineUser using the POST method for security.
+        """
+
+        logging.info("update names in progress")
+
+        self.first_name = request.POST['first_name']
+        self.last_name = request.POST['last_name']
+
+        username = self.username
+        first_name = self.first_name
+        email = self.email
+
+        assert self is not None
+        assert username is not None
+        assert first_name is not None
+        assert email is not None
+
+        assert username != ''
+        assert first_name != ''
+        assert email != ''
+
+        records = {"username": username,
+                   "first_name": first_name,
+                   "email": email}
+        logging.debug("BusinemeUser up_names INFO: %s", records)
+        self.save()
+
+    def update_user_password(self, request):
+        """
+        Take a request from application and modify the name of the user.
+        """
+
+        logging.info("update password in progress")
+
+        update_user = request.user
+
+        new_password = request.POST['new_password']
+        confirm_new_password = request.POST['confirm_new_password']
+
+        assert new_password is not None
+        assert confirm_new_password is not None
+
+        assert new_password != ''
+        assert confirm_new_password != ''
+
+        records = {"new_password": new_password,
+                   "confirm_new_password": confirm_new_password}
+
+        logging.debug(
+            'Object %s - password could not be changed. Something came Null ',
+            records)
+
+        if new_password.isEquals(confirm_new_password):
+            update_user.set_password(new_password)
+            update_user.save()
+
+            message_log_sucess = "Changes saved"
+            response = HttpResponse(message_log_sucess)
+        else:
+            message_log_fail = "Unable to change password \
+                                password's don't match"
+            response = HttpResponse(message_log_fail)
+
+        logging.info("password updated")
+        return response
+
+    def user_authenticate(self, request):
+        """
+        Certifies that there is a user in the db and returns it.
+        """
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username=username, password=password)
+
+        return user
