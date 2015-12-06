@@ -16,6 +16,7 @@ from .models import Post
 from .models import Favorite
 from django.http import JsonResponse
 from core.return_message import ReturnMessage
+from authentication.models import BusinemeUser
 
 
 STATUS_OK = 200
@@ -48,8 +49,8 @@ class BuslineSearchResultView(View):
             busline = Busline.objects.get(pk=busline_id)
             json_data = serialize(busline)
         except Busline.DoesNotExist:
-            return_message = ReturnMessage()
-            json_data = return_message.return_message(STATUS_NOT_FOUND)
+            message = ReturnMessage()
+            json_data = message.return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')
 
 
@@ -75,8 +76,8 @@ class TerminalSearchResultView(View):
             terminal = Terminal.objects.get(pk=terminal_id)
             json_data = serialize(terminal)
         except Terminal.DoesNotExist:
-            return_message = ReturnMessage()
-            json_data = return_message.return_message(STATUS_NOT_FOUND)
+            message = ReturnMessage()
+            json_data = message.return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')
 
 
@@ -102,8 +103,8 @@ class PostView(View):
             post = Post.objects.get(pk=post_id)
             json_data = serialize(post)
         except Post.DoesNotExist:
-            return_message = ReturnMessage()
-            json_data = return_message.return_message(STATUS_NOT_FOUND)
+            message = ReturnMessage()
+            json_data = message.return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')
 
 
@@ -116,17 +117,22 @@ class FavoriteView(View):
         If the db return something this favorite is deleted.
         """
 
-        user = request.POST['user']
-        busline = request.POST['busline']
+        username = request.GET['username']
+        line_number = request.GET['line_number']
 
-        favorite = Favorite.objects.get(user=user, busline=busline)
-
-        if(favorite is not None):
+        user = BusinemeUser.objects.get(username=username)
+        busline = Busline.objects.get(line_number=line_number)
+        try:
+            favorite = Favorite.objects.get(user=user, busline=busline)
+            favorite.delete()
+            json_data = serialize(favorite)
+        except Favorite.DoesNotExist:
+            message = ReturnMessage()
             new_favorite = Favorite()
 
             new_favorite.user = user
             new_favorite.busline = busline
             new_favorite.save()
+            json_data = message.return_message(STATUS_NOT_FOUND)
 
-        else:
-            favorite.delete()
+        return JsonResponse(json_data, content_type='application/json')

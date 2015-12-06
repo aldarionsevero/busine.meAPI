@@ -3,7 +3,7 @@ Busine-me API
 Universidade de Brasilia - FGA
 Tecnicas de Programacao, 2/2015
 @file test_models.py
-Testing models core.
+Tests for models core.
 """
 from django.test import TestCase
 from ..models import Busline

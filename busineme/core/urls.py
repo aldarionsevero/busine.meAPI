@@ -9,6 +9,7 @@ from django.conf.urls import url
 from .views import TerminalSearchResultView
 from .views import BuslineSearchResultView
 from .views import PostView
+from .views import FavoriteView
 
 
 urlpatterns = [
@@ -26,5 +27,8 @@ urlpatterns = [
         name='posts'),
     url(r'^posts/(?P<post_id>[0-9]+)/$',
         PostView.get_post),
+
+    url(r'^favorite/$', FavoriteView.as_view(),
+        name='favorite'),
 
 ]

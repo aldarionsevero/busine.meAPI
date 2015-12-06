@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Busine-me API
 Universidade de Brasilia - FGA
@@ -6,11 +5,13 @@ Tecnicas de Programação, 2/2015
 @file 0_test_parser.py
 Tests for Parser.
 """
-from configuration.tests import ParserTest
+
+from django.test import TestCase
+# from configuration.tests import ParserTest
 from importer.parser import Parser
 
 
-class TestParser(ParserTest):
+class TestParser(TestCase):
 
     """
     docstring for API_Views.
@@ -61,3 +62,21 @@ class TestParser(ParserTest):
     def test_parser_import_companies(self):
         parser = Parser()
         self.assertIsNone(parser.import_companies())
+
+    def test_parser_import_busline_existing(self):
+        parser = Parser()
+        parser.import_bus_lines()
+        csv_file = parser.read_file('importer/data/bus_lines.csv')
+
+        for row in csv_file:
+            self.assertIsNone(parser.import_bus_lines())
+            break
+
+    def test_parser_import_componies_existing(self):
+        parser = Parser()
+        parser.import_companies()
+        csv_file = parser.read_file('importer/data/companies.csv')
+
+        for row in csv_file:
+            self.assertIsNone(parser.import_companies())
+            break

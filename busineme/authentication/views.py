@@ -11,7 +11,7 @@ from core.serializers import serialize_objects
 from core.serializers import serialize
 from .models import BusinemeUser
 from django.http import JsonResponse
-from core.return_message import return_message
+from core.return_message import ReturnMessage
 import logging
 
 STATUS_OK = 200
@@ -50,6 +50,7 @@ class LoginView(View):
             user = BusinemeUser.objects.get(pk=user_id)
             json_data = serialize(user)
         except BusinemeUser.DoesNotExist:
-            json_data = return_message(STATUS_NOT_FOUND)
+            message = ReturnMessage()
+            json_data = message.return_message(STATUS_NOT_FOUND)
 
         return JsonResponse(json_data, content_type='application/json')

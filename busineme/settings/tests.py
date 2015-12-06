@@ -6,6 +6,7 @@ NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=core,authentication,importer',
     '--cover-erase',
+    '--omit=settings/*',
     # '--exe',
     # '--with-doctest',
     # '--all-modules',
