@@ -11,9 +11,7 @@ from authentication.models import BusinemeUser
 
 class Busline(models.Model):
 
-    """
-    Busline Model.
-    """
+    """Busline Model."""
 
     line_number = models.CharField(max_length=5, unique=True)
     description = models.CharField(max_length=255)
@@ -71,9 +69,7 @@ class Busline(models.Model):
 
 class Favorite(models.Model):
 
-    """
-    Favorite Model
-    """
+    """Favorite Model."""
 
     user = models.ForeignKey(BusinemeUser)
     busline = models.ForeignKey('Busline')
@@ -84,9 +80,7 @@ class Favorite(models.Model):
 
 class Company(models.Model):
 
-    """
-    Company Model.
-    """
+    """Company Model."""
 
     name = models.CharField(max_length=255)
 
@@ -98,9 +92,7 @@ class Company(models.Model):
 
 class Terminal(models.Model):
 
-    """
-    Terminal Model.
-    """
+    """Terminal Model."""
 
     description = models.CharField(max_length=255)
     address = models.CharField(max_length=255, null=True)

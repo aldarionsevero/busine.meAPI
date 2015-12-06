@@ -33,9 +33,8 @@ def serialize(busineme_object):
 
 
 def serialize_objects(object_list):
-    """
-    Convert objects in json.
-    """
+    """Convert objects in json."""
+
     json_dict = {}
     json_list = []
     for object_ in object_list:
@@ -45,9 +44,8 @@ def serialize_objects(object_list):
 
 
 def serialize_list(many_to_many_field):
-    """
-    Convert lists in json.
-    """
+    """Convert lists in json."""
+
     object_list = many_to_many_field.all()
     json_list = []
     for object_ in object_list:
