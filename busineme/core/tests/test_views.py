@@ -67,12 +67,22 @@ class TestSearchResultView(TestCase):
 
 class TestTerminalSearchResultView(TestCase):
 
+    """
+    This test method is used for make the tests in changes on the terminals
+    search view results.
+    """
+
     def setUp(self):
         self.terminal = Terminal()
 
         self.terminal.description = "Terminal Description Test String"
         self.terminal.addres = "Terminal Adress Test String "
         self.terminal.save()
+
+    """
+    This test method is used for analysis of method obtain the corrects
+    terminals.
+    """
 
     def test_get(self):
         response = self.client.get("/terminals/")
@@ -84,6 +94,11 @@ class TestTerminalSearchResultView(TestCase):
         response = self.client.get("/terminals/%s/" % str(terminal))
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
+
+    """
+    This test method is used for analysis of method obtain the correct
+    message when the terminal is not found.
+    """
 
     def test_get_terminal_not_found(self):
         response = self.client.get(
