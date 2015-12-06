@@ -62,3 +62,21 @@ class TestParser(TestCase):
     def test_parser_import_companies(self):
         parser = Parser()
         self.assertIsNone(parser.import_companies())
+
+    def test_parser_import_busline_existing(self):
+        parser = Parser()
+        parser.import_bus_lines()
+        csv_file = parser.read_file('importer/data/bus_lines.csv')
+
+        for row in csv_file:
+            self.assertIsNone(parser.import_bus_lines())
+            break
+
+    def test_parser_import_componies_existing(self):
+        parser = Parser()
+        parser.import_companies()
+        csv_file = parser.read_file('importer/data/companies.csv')
+
+        for row in csv_file:
+            self.assertIsNone(parser.import_companies())
+            break
