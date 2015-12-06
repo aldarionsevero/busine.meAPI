@@ -15,7 +15,7 @@ from .models import Busline
 from .models import Post
 from .models import Favorite
 from django.http import JsonResponse
-from core.return_message import return_message
+from core.return_message import ReturnMessage
 
 
 STATUS_OK = 200
@@ -48,7 +48,8 @@ class BuslineSearchResultView(View):
             busline = Busline.objects.get(pk=busline_id)
             json_data = serialize(busline)
         except Busline.DoesNotExist:
-            json_data = return_message(STATUS_NOT_FOUND)
+            return_message = ReturnMessage()
+            json_data = return_message.return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')
 
 
@@ -74,7 +75,8 @@ class TerminalSearchResultView(View):
             terminal = Terminal.objects.get(pk=terminal_id)
             json_data = serialize(terminal)
         except Terminal.DoesNotExist:
-            json_data = return_message(STATUS_NOT_FOUND)
+            return_message = ReturnMessage()
+            json_data = return_message.return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')
 
 
@@ -100,7 +102,8 @@ class PostView(View):
             post = Post.objects.get(pk=post_id)
             json_data = serialize(post)
         except Post.DoesNotExist:
-            json_data = return_message(STATUS_NOT_FOUND)
+            return_message = ReturnMessage()
+            json_data = return_message.return_message(STATUS_NOT_FOUND)
         return JsonResponse(json_data, content_type='application/json')
 
 
