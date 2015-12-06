@@ -3,7 +3,6 @@ from django.test import Client
 from ..models import Busline
 from ..models import Terminal
 from ..models import Post
-from ..models import Favorite
 from authentication.models import BusinemeUser
 
 STATUS_OK = 200
