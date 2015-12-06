@@ -3,7 +3,6 @@ from django.test import Client
 from ..models import Busline
 from ..models import Terminal
 from ..models import Post
-from ..models import Favorite
 from authentication.models import BusinemeUser
 
 STATUS_OK = 200
@@ -140,8 +139,16 @@ class TestFavoriteView(TestCase):
         # self.favorite.save()
 
     def test_get_favorite_add(self):
+        self.toggle_favorite(self.user.username, self.busline.line_number)
+
+    def test_get_favorite_un_favorite(self):
+        self.toggle_favorite(self.user.username, self.busline.line_number)
+        # second access to un-favorite
+        self.toggle_favorite(self.user.username, self.busline.line_number)
+
+    def toggle_favorite(self, username, line_number):
         response = self.client.get(
-            "/favorite/?username=" + self.user.username +
-            "&line_number=" + self.busline.line_number)
+            "/favorite/?username=" + username +
+            "&line_number=" + line_number)
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
