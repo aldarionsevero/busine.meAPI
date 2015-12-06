@@ -40,3 +40,8 @@ class TestReturnMessage(TestCase):
         message = self.response_message.return_message(
             STATUS_CODE_SERVER_ERROR)
         self.assertEquals(message['return_message'], 'Internal Server Error.')
+
+    def test_return_for_wrong(self):
+        message = self.response_message.return_message(
+            STATUS_UNDEFINED)
+        self.assertEquals(message['return_message'], 'Something went wrong.')
