@@ -30,3 +30,8 @@ class TestReturnMessage(TestCase):
         message = self.response_message.return_message(
             STATUS_CODE_CREATED)
         self.assertEquals(message['return_message'], 'Successfully Created.')
+
+    def test_return_for_404(self):
+        message = self.response_message.return_message(
+            STATUS_CODE_NOT_FOUND)
+        self.assertEquals(message['return_message'], 'Not Found.')
