@@ -12,6 +12,11 @@ GENERIC_NOT_FOUND_ID = 99999999
 
 class TestSearchResultView(TestCase):
 
+    """
+    This test method is used for make the tests in changes on the search
+    view results.
+    """
+
     def setUp(self):
         self.client = Client()
 
@@ -26,10 +31,20 @@ class TestSearchResultView(TestCase):
         self.busline.save()
         self.busline.terminals.add(self.terminal)
 
+    """
+    This test method is used for analysis of method obtain the corrects
+    results.
+    """
+
     def test_get(self):
         response = self.client.get("/buslines/")
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
+
+    """
+    This test method is used for analysis of method obtain the corrects
+    buslines.
+    """
 
     def test_get_busline(self):
         bus = Busline.objects.get(description="route")
@@ -37,6 +52,11 @@ class TestSearchResultView(TestCase):
             "/buslines/" + str(bus.id) + "/")
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
+
+    """
+    This test method is used for analysis of method obtain the correct
+    message when the bus line is not found.
+    """
 
     def test_get_busline_not_found(self):
         response = self.client.get(
