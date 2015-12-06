@@ -123,7 +123,7 @@ class TestFavoriteView(TestCase):
     """docstring for TestFavoriteView"""
 
     def setUp(self):
-        self.favorite = Favorite()
+        # self.favorite = Favorite()
 
         self.busline = Busline()
         self.busline.line_number = "002"
@@ -135,6 +135,13 @@ class TestFavoriteView(TestCase):
         self.user.username = "TestUser1"
         self.user.save()
 
-        self.favorite.user = self.user
-        self.favorite.busline = self.busline
-        self.favorite.save()
+        # self.favorite.user = self.user
+        # self.favorite.busline = self.busline
+        # self.favorite.save()
+
+    def test_get_favorite_add(self):
+        response = self.client.get(
+            "/favorite/?username=" + self.user.username +
+            "&line_number=" + self.busline.line_number)
+        code = response.status_code
+        self.assertEquals(code, STATUS_OK)
