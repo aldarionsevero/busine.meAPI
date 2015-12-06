@@ -13,17 +13,26 @@ from core.models import Busline, Terminal, Company
 
 class Parser(object):
 
+    """
+    This method is used for make the import in database to create
+    objects.
+    """
+
     def import_data(self):
         self.import_companies()
         self.import_terminals()
         self.import_bus_lines()
         self.create_busline_terminal_relation()
 
+    """This method is used for make datas of csv in objects."""
+
     def read_file(self, file_name):
         csv_file = open(file_name)
         csv_file = csv.reader(csv_file, delimiter=',', quotechar="'")
 
         return csv_file
+
+    """This method is used for save the objects created in database."""
 
     def import_bus_lines(self):
         csv_file = self.read_file('importer/data/bus_lines.csv')
