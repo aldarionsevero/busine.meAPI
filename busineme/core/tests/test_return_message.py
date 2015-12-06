@@ -35,3 +35,8 @@ class TestReturnMessage(TestCase):
         message = self.response_message.return_message(
             STATUS_CODE_NOT_FOUND)
         self.assertEquals(message['return_message'], 'Not Found.')
+
+    def test_return_for_500(self):
+        message = self.response_message.return_message(
+            STATUS_CODE_SERVER_ERROR)
+        self.assertEquals(message['return_message'], 'Internal Server Error.')
