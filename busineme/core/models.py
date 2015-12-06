@@ -74,6 +74,9 @@ class Favorite(models.Model):
     user = models.ForeignKey(BusinemeUser)
     busline = models.ForeignKey('Busline')
 
+    serialize_fields = ['user',
+                        'busline']
+
     def __str__(self):
         return "{} - {}".format(self.user.username, self.busline.line_number)
 
