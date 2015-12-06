@@ -38,8 +38,8 @@ class TestRankPosition(TestCase):
         self.assertRaises(IntegrityError, self.rank.save)
 
     """
-    This test method is used for make the validations for the minimum positions on
-    the rank.
+    This test method is used for make the validations for the minimum positions
+    on the rank.
     """
 
     def test_empty_min_points_field(self):
