@@ -18,9 +18,7 @@ logging.basicConfig(format=FORMAT,
 
 class RankPosition(models.Model):
 
-    """
-    Model that carries the user rank based in description and points.
-    """
+    """Model that carries the user rank based in description and points."""
 
     description = models.CharField(max_length=100)
     min_points = models.IntegerField()
@@ -33,9 +31,7 @@ class RankPosition(models.Model):
 
 class BusinemeUser(AbstractUser):
 
-    """
-    Model for User. Inherits AbstractUser and overrides specific things.
-    """
+    """Model for User. Inherits AbstractUser and overrides specific things."""
 
     pontuation = models.IntegerField(default=0)
     rank = models.ForeignKey(RankPosition, null=True)
@@ -50,9 +46,8 @@ class BusinemeUser(AbstractUser):
                         'date_joined']
 
     def save(self, *args, **kwargs):
-        """
-        Saves user.
-        """
+        """Saves user."""
+
         self.username = self.username.lower()
         super(BusinemeUser, self).save(*args, **kwargs)
 
