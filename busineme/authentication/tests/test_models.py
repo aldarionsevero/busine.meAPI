@@ -2,7 +2,7 @@
 Busine-me API
 Universidade de Brasilia - FGA
 Tecnicas de Programacao, 2/2015
-@file models.py
+@file test_models.py
 Testing models authentication.
 """
 from django.test import TestCase
@@ -10,11 +10,15 @@ from django.db import IntegrityError
 from ..models import RankPosition, BusinemeUser
 
 """
-This class is used for create tests some validations in RankPosition.
+This class is used for create tests some validations in models of RankPosition.
 """
 
 
 class TestRankPosition(TestCase):
+
+    """
+    This test method is used for make the tests in changes on the RankPosition.
+    """
 
     def setUp(self):
         self.rank = RankPosition()
@@ -32,6 +36,11 @@ class TestRankPosition(TestCase):
 
     def test_empty_fields(self):
         self.assertRaises(IntegrityError, self.rank.save)
+
+    """
+    This test method is used for make the validations for the minimum positions
+    on the rank.
+    """
 
     def test_empty_min_points_field(self):
         self.rank.description = "Rank A"

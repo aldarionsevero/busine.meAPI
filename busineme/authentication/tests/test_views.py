@@ -2,8 +2,8 @@
 Busine-me API
 Universidade de Brasilia - FGA
 Tecnicas de Programacao, 2/2015
-@file models.py
-Testing models authentication.
+@file test_views.py
+Testing views authentication.
 """
 from django.test import TestCase
 from django.test import Client
@@ -11,7 +11,7 @@ from ..models import RankPosition
 from ..models import BusinemeUser
 
 """
-This class is used for create tests some validations in RankPosition.
+This class is used for create tests some validations in views of RankPosition.
 """
 
 
