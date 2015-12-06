@@ -3,6 +3,7 @@ from django.test import Client
 from ..models import Busline
 from ..models import Terminal
 from ..models import Post
+from ..models import Favorite
 from authentication.models import BusinemeUser
 
 STATUS_OK = 200
@@ -115,3 +116,25 @@ class TestPostView(TestCase):
             "/posts/" + str(GENERIC_NOT_FOUND_ID) + "/")
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
+
+
+class TestFavoriteView(TestCase):
+
+    """docstring for TestFavoriteView"""
+
+    def setUp(self):
+        self.favorite = Favorite()
+
+        self.busline = Busline()
+        self.busline.line_number = "002"
+        self.busline.route_size = 0.1
+        self.busline.fee = 3.50
+        self.busline.save()
+
+        self.user = BusinemeUser()
+        self.user.username = "TestUser1"
+        self.user.save()
+
+        self.favorite.user = self.user
+        self.favorite.busline = self.busline
+        self.favorite.save()
