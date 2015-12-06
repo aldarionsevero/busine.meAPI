@@ -122,15 +122,17 @@ class FavoriteView(View):
 
         user = BusinemeUser.objects.get(username=username)
         busline = Busline.objects.get(line_number=line_number)
-
-        favorite = Favorite.objects.get(user=user, busline=busline)
-
-        if(favorite is not None):
+        try:
+            favorite = Favorite.objects.get(user=user, busline=busline)
+            favorite.delete()
+            json_data = serialize(favorite)
+        except Favorite.DoesNotExist:
+            message = ReturnMessage()
             new_favorite = Favorite()
 
             new_favorite.user = user
             new_favorite.busline = busline
             new_favorite.save()
+            json_data = message.return_message(STATUS_NOT_FOUND)
 
-        else:
-            favorite.delete()
+        return JsonResponse(json_data, content_type='application/json')
