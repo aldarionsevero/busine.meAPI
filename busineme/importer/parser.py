@@ -8,7 +8,6 @@ Populate database with parser data.
 """
 import csv
 from django.core.exceptions import ObjectDoesNotExist
-from django.db import IntegrityError
 from core.models import Busline, Terminal, Company
 
 
