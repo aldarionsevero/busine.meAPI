@@ -16,6 +16,7 @@ from .models import Post
 from .models import Favorite
 from django.http import JsonResponse
 from core.return_message import ReturnMessage
+from authentication.models import BusinemeUser
 
 
 STATUS_OK = 200
@@ -116,8 +117,11 @@ class FavoriteView(View):
         If the db return something this favorite is deleted.
         """
 
-        user = request.POST['user']
-        busline = request.POST['busline']
+        username = request.GET['username']
+        line_number = request.GET['line_number']
+
+        user = BusinemeUser.objects.get(username=username)
+        busline = Busline.objects.get(line_number=line_number)
 
         favorite = Favorite.objects.get(user=user, busline=busline)
 
