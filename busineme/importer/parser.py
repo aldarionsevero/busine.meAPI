@@ -42,8 +42,6 @@ class Parser(object):
                 bus_line.save()
             except ObjectDoesNotExist:
                 print('Busline', row[0], 'has incomplete data.')
-            except IntegrityError:
-                print('Busline', row[0], 'already registered.')
 
     def create_busline_terminal_relation(self):
         """This method is used for read in parser file the fields referring a
