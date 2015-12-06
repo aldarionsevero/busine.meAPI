@@ -25,3 +25,8 @@ class TestReturnMessage(TestCase):
         message = self.response_message.return_message(
             STATUS_CODE_OK)
         self.assertEquals(message['return_message'], 'Everything Worked.')
+
+    def test_return_for_201(self):
+        message = self.response_message.return_message(
+            STATUS_CODE_CREATED)
+        self.assertEquals(message['return_message'], 'Successfully Created.')
