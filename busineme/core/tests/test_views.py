@@ -40,7 +40,7 @@ class TestSearchResultView(TestCase):
 
     def test_get_busline_not_found(self):
         response = self.client.get(
-            '/buslines/' + str(GENERIC_NOT_FOUND_ID) + "/")
+            "/buslines/" + str(GENERIC_NOT_FOUND_ID) + "/")
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
 
@@ -62,6 +62,12 @@ class TestTerminalSearchResultView(TestCase):
     def test_get_terminal(self):
         terminal = self.terminal.id
         response = self.client.get("/terminals/%s/" % str(terminal))
+        code = response.status_code
+        self.assertEquals(code, STATUS_OK)
+
+    def test_get_terminal_not_found(self):
+        response = self.client.get(
+            "/terminals/" + str(GENERIC_NOT_FOUND_ID) + "/")
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
 
