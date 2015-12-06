@@ -104,8 +104,14 @@ class TestPostView(TestCase):
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
 
-    def test_get_terminal_null(self):
+    def test_get_post_null(self):
         response = self.client.get('\
             /posts/%s/' % (str(GENERIC_NOT_FOUND_ID)))
         code = response.status_code
         self.assertEquals(code, STATUS_NOT_FOUND)
+
+    def test_get_post_not_found(self):
+        response = self.client.get(
+            "/posts/" + str(GENERIC_NOT_FOUND_ID) + "/")
+        code = response.status_code
+        self.assertEquals(code, STATUS_OK)
