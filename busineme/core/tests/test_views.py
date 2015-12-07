@@ -109,6 +109,11 @@ class TestTerminalSearchResultView(TestCase):
 
 class TestPostView(TestCase):
 
+    """
+    This test method is used for make the tests in changes on the posts
+    and view results.
+    """
+
     def setUp(self):
         self.post = Post()
 
@@ -128,6 +133,11 @@ class TestPostView(TestCase):
         self.post.user = self.user
         self.post.save()
 
+    """
+    This test method is used for analysis of method obtain the corrects
+    posts.
+    """
+
     def test_get(self):
         response = self.client.get("/posts/")
         code = response.status_code
@@ -139,11 +149,21 @@ class TestPostView(TestCase):
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
 
+    """
+    This test method is used for analysis of method obtain the correct
+    message when the terminal is null.
+    """
+
     def test_get_post_null(self):
         response = self.client.get('\
             /posts/%s/' % (str(GENERIC_NOT_FOUND_ID)))
         code = response.status_code
         self.assertEquals(code, STATUS_NOT_FOUND)
+
+    """
+    This test method is used for analysis of method obtain the correct
+    message when the post is not found.
+    """
 
     def test_get_post_not_found(self):
         response = self.client.get(
