@@ -24,21 +24,17 @@ class Parser(object):
         self.import_bus_lines()
         self.create_busline_terminal_relation()
 
-    """
-    This method is used to transform the database file in objects.
-    """
-
     def read_file(self, file_name):
+        """This method is used to transform the database file in objects."""
+
         csv_file = open(file_name)
         csv_file = csv.reader(csv_file, delimiter=',', quotechar="'")
 
         return csv_file
 
-    """
-    This method is used for save the objects created in database.
-    """
-
     def import_bus_lines(self):
+        """This method is used for save the objects created in database."""
+
         csv_file = self.read_file('importer/data/bus_lines.csv')
 
         print('Importing Buslines...')
