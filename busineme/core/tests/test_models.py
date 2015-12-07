@@ -76,6 +76,10 @@ This class is used for testing the Favorite model.
 
 class TestFavorite(TestCase):
 
+    """
+    This test method is used for make the tests in changes on the favorites.
+    """
+
     def setUp(self):
         self.favorite = Favorite()
 
@@ -107,6 +111,10 @@ This class is used for create tests some validations in company class.
 
 class TestCompany(TestCase):
 
+    """
+    This test method is used for make the tests in changes on the companies.
+    """
+
     def setUp(self):
         self.company = Company()
 
@@ -124,6 +132,10 @@ This class is used for create tests some validations in 'terminal' class.
 
 
 class TestTerminal(TestCase):
+
+    """
+    This test method is used for make the tests in changes on the terminals.
+    """
 
     def setUp(self):
         self.terminal = Terminal()
@@ -143,6 +155,10 @@ This class is used for create tests some validations in 'post' class.
 
 
 class TestPost(TestCase):
+
+    """
+    This test method is used for make the tests in changes on the post.
+    """
 
     def setUp(self):
         self.post = Post()
@@ -173,9 +189,19 @@ class TestPost(TestCase):
     def test_api_all(self):
         self.assertEquals(1, self.post.api_all().count())
 
+    """
+    This test method is used for make the tests in search of the official
+    application and his relationship with API.
+    """
+
     def test_api_filter_contains(self):
         busline = self.busline
         self.assertEquals(1, self.post.api_filter_contains(busline).count())
+
+    """
+    This test method is used for make the tests in catcher of the official
+    application and converts to the API.
+    """
 
     def test_api_get(self):
         post = self.post

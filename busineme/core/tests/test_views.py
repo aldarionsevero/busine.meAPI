@@ -12,6 +12,11 @@ GENERIC_NOT_FOUND_ID = 99999999
 
 class TestSearchResultView(TestCase):
 
+    """
+    This test method is used for make the tests in changes on the search
+    view results.
+    """
+
     def setUp(self):
         self.client = Client()
 
@@ -26,10 +31,20 @@ class TestSearchResultView(TestCase):
         self.busline.save()
         self.busline.terminals.add(self.terminal)
 
+    """
+    This test method is used for analysis of method obtain the corrects
+    results.
+    """
+
     def test_get(self):
         response = self.client.get("/buslines/")
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
+
+    """
+    This test method is used for analysis of method obtain the corrects
+    buslines.
+    """
 
     def test_get_busline(self):
         bus = Busline.objects.get(description="route")
@@ -37,6 +52,11 @@ class TestSearchResultView(TestCase):
             "/buslines/" + str(bus.id) + "/")
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
+
+    """
+    This test method is used for analysis of method obtain the correct
+    message when the bus line is not found.
+    """
 
     def test_get_busline_not_found(self):
         response = self.client.get(
@@ -47,12 +67,22 @@ class TestSearchResultView(TestCase):
 
 class TestTerminalSearchResultView(TestCase):
 
+    """
+    This test method is used for make the tests in changes on the terminals
+    search view results.
+    """
+
     def setUp(self):
         self.terminal = Terminal()
 
         self.terminal.description = "Terminal Description Test String"
         self.terminal.addres = "Terminal Adress Test String "
         self.terminal.save()
+
+    """
+    This test method is used for analysis of method obtain the corrects
+    terminals.
+    """
 
     def test_get(self):
         response = self.client.get("/terminals/")
@@ -65,6 +95,11 @@ class TestTerminalSearchResultView(TestCase):
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
 
+    """
+    This test method is used for analysis of method obtain the correct
+    message when the terminal is not found.
+    """
+
     def test_get_terminal_not_found(self):
         response = self.client.get(
             "/terminals/" + str(GENERIC_NOT_FOUND_ID) + "/")
@@ -73,6 +108,11 @@ class TestTerminalSearchResultView(TestCase):
 
 
 class TestPostView(TestCase):
+
+    """
+    This test method is used for make the tests in changes on the posts
+    and view results.
+    """
 
     def setUp(self):
         self.post = Post()
@@ -93,6 +133,11 @@ class TestPostView(TestCase):
         self.post.user = self.user
         self.post.save()
 
+    """
+    This test method is used for analysis of method obtain the corrects
+    posts.
+    """
+
     def test_get(self):
         response = self.client.get("/posts/")
         code = response.status_code
@@ -104,11 +149,21 @@ class TestPostView(TestCase):
         code = response.status_code
         self.assertEquals(code, STATUS_OK)
 
+    """
+    This test method is used for analysis of method obtain the correct
+    message when the terminal is null.
+    """
+
     def test_get_post_null(self):
         response = self.client.get('\
             /posts/%s/' % (str(GENERIC_NOT_FOUND_ID)))
         code = response.status_code
         self.assertEquals(code, STATUS_NOT_FOUND)
+
+    """
+    This test method is used for analysis of method obtain the correct
+    message when the post is not found.
+    """
 
     def test_get_post_not_found(self):
         response = self.client.get(
